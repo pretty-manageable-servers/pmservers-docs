@@ -1,44 +1,24 @@
 ---
 title: Connect with SSH
-description: Connect to a VM through the jump host at jump.pmservers.org.
+description: Coming soon. SSH to VMs through a jump host. Until then, use the browser console.
 sidebar:
   order: 2
+  badge:
+    text: Soon
+    variant: caution
 ---
 
-VMs have a private IP only. You connect through the jump host `jump.pmservers.org` (port 22).
+:::caution[Coming soon]
+SSH from the internet does not work yet. Use the [browser console](/vms/console/) to get into your VM.
+:::
 
-## Command
+VMs have a private IP only. SSH access from the internet will go through a jump host. This page will give the command when it is available.
 
-```sh
-ssh -J pms@jump.pmservers.org <user>@<private-ip>
-```
+## Your SSH key
 
-- `<user>` is the default user of the image. For `ubuntu-24.04` it is `ubuntu`.
-- `<private-ip>` shows on the VM page in the console. The API returns it as `private_ip`.
+You still need an SSH public key to create a VM. PMS Cloud puts it on the VM for the default user (`ubuntu` for `ubuntu-24.04`). When SSH is available, you will use this key.
 
-Example:
-
-```sh
-ssh -J pms@jump.pmservers.org ubuntu@10.0.12.34
-```
-
-## SSH config
-
-Add this to `~/.ssh/config`. Then use `ssh my-vm`.
-
-```
-Host my-vm
-  HostName 10.0.12.34
-  User ubuntu
-  ProxyJump pms@jump.pmservers.org
-  IdentityFile ~/.ssh/id_ed25519
-```
-
-## No private IP?
+## Private IP
 
 - The private IP shows about 1 minute after the first start. The guest agent in the VM reports it.
 - A VM with no internet cannot install the guest agent. Then it shows no IP.
-
-## Other way in
-
-Use the [browser console](/vms/console/). It does not need SSH.

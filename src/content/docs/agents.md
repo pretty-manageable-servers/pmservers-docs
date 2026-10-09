@@ -28,8 +28,8 @@ sends a chat request to PMS Cloud with the model gemma4-e4b.
 ```
 
 ```
-Read https://docs.pmservers.org/llms-full.txt. Then help me connect to my
-PMS Cloud VM with SSH.
+Read https://docs.pmservers.org/llms-full.txt. Then tell me which VM sizes fit in
+the PMS Cloud free tier.
 ```
 
 ## Rules for agents

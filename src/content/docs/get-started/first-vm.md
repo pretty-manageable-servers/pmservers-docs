@@ -1,6 +1,6 @@
 ---
 title: Your first VM
-description: Create an Ubuntu VM in the console and connect to it with SSH.
+description: Create an Ubuntu VM in the console and open its browser console.
 sidebar:
   order: 2
 ---
@@ -20,10 +20,6 @@ The VM status is `provisioning` while the disk is made. Then it changes to `runn
 
 ## Connect
 
-Wait about 1 minute after the VM starts. Then the private IP shows on the VM page.
+When the VM is `running`, open the VM page and click the console. The console logs in as `ubuntu`. See [Browser console](/vms/console/).
 
-```sh
-ssh -J pms@jump.pmservers.org ubuntu@<private-ip>
-```
-
-See [Connect with SSH](/vms/ssh/) for details.
+SSH from the internet is coming soon. See [Connect with SSH](/vms/ssh/).
