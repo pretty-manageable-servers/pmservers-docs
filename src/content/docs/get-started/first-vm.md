@@ -1,6 +1,6 @@
 ---
 title: Your first VM
-description: Create an Ubuntu VM in the console and open its browser console.
+description: Create an Ubuntu VM in the console, then connect with the browser console or SSH.
 sidebar:
   order: 2
 ---
@@ -22,4 +22,10 @@ The VM status is `provisioning` while the disk is made. Then it changes to `runn
 
 When the VM is `running`, open the VM page and click the console. The console logs in as `ubuntu`. See [Browser console](/vms/console/).
 
-SSH from the internet is coming soon. See [Connect with SSH](/vms/ssh/).
+To connect from your computer with SSH, install `cloudflared` (or use Docker), add the jump host to your SSH config, then run:
+
+```sh
+ssh -J pms-jump ubuntu@<private ip>
+```
+
+See [Connect with SSH](/vms/ssh/) for the setup.
