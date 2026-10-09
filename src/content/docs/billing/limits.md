@@ -7,6 +7,8 @@ sidebar:
 
 All limits are for the free tier. They apply to your whole account, not to each project.
 
+Usage in a shared project counts against the project owner. See [Project members](/get-started/members/).
+
 ## VMs
 
 | Limit | Value |
@@ -17,6 +19,12 @@ All limits are for the free tier. They apply to your whole account, not to each 
 | Disk for each VM | 10 to 20 GB |
 | Console connections for each VM | 1 at a time |
 | Saved SSH public keys | 20 |
+
+## Projects
+
+| Limit | Value |
+|---|---|
+| Members in each project | 20, plus the owner |
 
 ## AI
 

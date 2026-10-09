@@ -16,7 +16,8 @@ PMS Cloud is a small cloud provider. You manage everything in the console at `ht
 
 - A project holds VMs and AI keys.
 - You can make more than one project.
-- To delete a project, first delete its VMs and AI keys.
+- You can invite other people to a project. See [Project members](/get-started/members/).
+- To delete a project, first delete its VMs and AI keys. Only the owner can delete a project.
 
 ## Region
 
@@ -24,7 +25,7 @@ There is one region: `ca-tor-1` (Toronto, Canada). All projects use it.
 
 ## Free tier limits
 
-The limits apply to your whole account, not to each project.
+The limits apply to your whole account, not to each project. Usage in a project that you own counts against your account, also when a member creates it.
 
 | Resource | Limit |
 |---|---|

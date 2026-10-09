@@ -21,7 +21,7 @@ The jump host needs `cloudflared` on your computer. A future PMS CLI will do thi
 - The private IP and the SSH user of the VM. The VM page shows them. The user is `ubuntu` for `ubuntu-24.04`.
 - `cloudflared` or Docker. See the steps below.
 
-The jump host lets your key reach port 22 of your own VMs only. It has no shell.
+The jump host lets your key reach port 22 of the VMs in your projects only: the projects that you own or are a member of. It has no shell.
 
 ## 1. Get cloudflared
 
@@ -77,8 +77,8 @@ Then use `ssh web-1`. `scp`, `rsync` and VS Code Remote SSH also use this name.
 
 ## Problems
 
-- **Permission denied (publickey)**: the key is not the VM create key or a saved key on your account, or the VM is not running. The jump host accepts a key only when it can reach at least one of your running VMs.
-- **channel open failed** or **stdio forwarding failed**: the IP is not one of your VMs. Check the private IP on the VM page. The IP can change after a restart.
+- **Permission denied (publickey)**: the key is not the VM create key or a saved key on your account, or the VM is not running. The jump host accepts a key only when it can reach at least one running VM in your projects.
+- **channel open failed** or **stdio forwarding failed**: the IP is not a VM in one of your projects. Check the private IP on the VM page. The IP can change after a restart.
 - **no such host**: wait a few minutes and try again.
 - **No private IP**: see below.
 

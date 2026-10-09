@@ -20,12 +20,22 @@ Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token. See [
 
 | Method | Path | Use |
 |---|---|---|
-| `GET` | `/projects` | List projects. |
+| `GET` | `/projects` | List the projects that you own or are a member of. Each has `role`: `owner` or `member`. |
 | `POST` | `/projects` | Create a project. Body: `{"name": "..."}`. |
 | `GET` | `/projects/{p}` | Get a project. |
 | `PATCH` | `/projects/{p}` | Rename a project. Body: `{"name": "..."}`. |
-| `DELETE` | `/projects/{p}` | Delete a project. It must have no VMs and no AI keys. Returns `202`. |
-| `GET` | `/projects/{p}/usage` | vCPU, memory, disk and AI spend against your limits. |
+| `DELETE` | `/projects/{p}` | Delete a project. Owner only (`403` for a member). It must have no VMs and no AI keys. Returns `202`. |
+| `GET` | `/projects/{p}/usage` | vCPU, memory, disk and AI spend of the project owner, against the owner's limits. |
+
+## Project members
+
+See [Project members](/get-started/members/).
+
+| Method | Path | Use |
+|---|---|---|
+| `GET` | `/projects/{p}/members` | List the owner and the members. Each has `user_id`, `email`, `role` and `created_at`. |
+| `POST` | `/projects/{p}/members` | Add a member. Owner only. Body: `{"email": "..."}`. Returns `201` with `invited: true` if the person had no account and got an invite email. `409` if they are already a member. |
+| `DELETE` | `/projects/{p}/members/{user_id}` | The owner removes a member, or a member removes themselves to leave. The owner cannot leave. Returns `204`. |
 
 ## SSH keys
 
@@ -83,4 +93,4 @@ VM object:
 |---|---|---|
 | `GET` | `/projects/{p}/events` | The last 50 events of the project. |
 | `POST` | `/events/ticket` | Get a ticket for the event stream. |
-| `GET` | `/events/stream?ticket=...` | Server-sent events (SSE) for all your projects. To resume, send `Last-Event-ID` or `?last_event_id=`. |
+| `GET` | `/events/stream?ticket=...` | Server-sent events (SSE) for all projects that you own or are a member of. To resume, send `Last-Event-ID` or `?last_event_id=`. |

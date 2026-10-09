@@ -65,6 +65,7 @@ export default defineConfig({
               { label: 'Storage', items: [{ autogenerate: { directory: 'storage' } }] },
               { label: 'Billing and limits', items: [{ autogenerate: { directory: 'billing' } }] },
               { label: 'For agents', items: ['agents'] },
+              { label: 'Changelog', items: ['changelog'] },
             ],
           },
           {
