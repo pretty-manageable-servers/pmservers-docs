@@ -1,0 +1,15 @@
+# Cloudflare Pages headers. Agents and browser tools can fetch the Markdown files.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/openapi.json
+  Access-Control-Allow-Origin: *
