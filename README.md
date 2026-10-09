@@ -41,6 +41,17 @@ The build makes these files from the Markdown:
 
 Keep `public/openapi.json` the same as the AI gateway in `pmservers-api` (`rust/ai-gateway`).
 
+## Theme
+
+The PMServers brand style. See the "Brand style" page in the agent wiki.
+
+- Colors and fonts: `src/styles/custom.css`.
+- Header with section tabs: `src/components/Header.astro`. The tabs come from `starlight-sidebar-topics` in `astro.config.mjs`.
+- Page title, breadcrumb and the "Copy page" menu: `src/components/PageTitle.astro`.
+  "Open in Slopbot" shows "Coming soon" until `SLOPBOT_URL` in that file is set.
+- Code blocks that follow each other become one block with tabs: `src/scripts/code-tabs.ts`.
+- Home page hero and product cards: `src/components/Hero.astro`.
+
 ## Run locally
 
 ```sh

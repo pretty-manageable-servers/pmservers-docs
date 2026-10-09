@@ -1,0 +1,107 @@
+---
+import Search from '@astrojs/starlight/components/Search.astro';
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+
+const topics = Astro.locals.starlightSidebarTopics?.topics ?? [];
+---
+
+<div class="header">
+  <div class="title-wrapper">
+    <SiteTitle />
+  </div>
+
+  <nav class="topics" aria-label="Sections">
+    {
+      topics.map((topic) => (
+        <a href={topic.link} aria-current={topic.isCurrent ? 'page' : undefined}>
+          {topic.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="right-group">
+    <Search />
+    <div class="desktop-only">
+      <ThemeSelect />
+      <a class="console" href="https://console.pmservers.org">Console</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 100%;
+  }
+  .title-wrapper {
+    min-width: 0;
+    overflow: clip;
+    padding: 0.25rem;
+    margin: -0.25rem;
+  }
+  .topics {
+    display: none;
+    gap: 0.25rem;
+  }
+  .topics a {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .topics a:hover {
+    color: var(--sl-color-white);
+  }
+  .topics a[aria-current='page'] {
+    background: var(--pms-pill);
+    color: var(--sl-color-white);
+  }
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .desktop-only {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+  }
+  .console {
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.5rem;
+    background: var(--sl-color-white);
+    color: var(--sl-color-black);
+    font-size: var(--sl-text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .console:hover {
+    opacity: 0.85;
+  }
+
+  @media (min-width: 50rem) {
+    .desktop-only {
+      display: flex;
+    }
+  }
+  @media (min-width: 64rem) {
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+    .topics {
+      display: flex;
+    }
+    .right-group {
+      justify-self: end;
+    }
+  }
+</style>

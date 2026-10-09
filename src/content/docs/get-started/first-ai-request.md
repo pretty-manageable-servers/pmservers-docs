@@ -13,16 +13,14 @@ sidebar:
 
 ## Send a request
 
+The AI API is OpenAI-compatible. Use curl, or any OpenAI SDK with the base URL `https://api.pmservers.org/ai/v1`.
+
 ```sh
 curl https://api.pmservers.org/ai/v1/chat/completions \
   -H "Authorization: Bearer $PMS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model": "gemma4-e4b", "messages": [{"role": "user", "content": "Hello"}]}'
 ```
-
-## Use the OpenAI SDK
-
-The AI API is OpenAI-compatible. Set the base URL to `https://api.pmservers.org/ai/v1`.
 
 ```python
 from openai import OpenAI
