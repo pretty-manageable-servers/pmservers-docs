@@ -7,14 +7,16 @@ sidebar:
 
 Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token. See [API overview](/api/overview/).
 
-`{p}` is a project ID. `{vm}` and `{k}` are resource IDs. Lists return `{"items": [...]}`.
+`{p}` is a project ID. `{vm}`, `{c}` and `{k}` are resource IDs. Lists return `{"items": [...]}`.
 
 ## Account
 
 | Method | Path | Use |
 |---|---|---|
 | `GET` | `/me` | Your user ID, email and plan. |
-| `GET` | `/catalog` | Regions, VM sizes, VM images and AI models. |
+| `GET` | `/catalog` | Regions, VM sizes, VM images, container sizes and AI models. |
+| `GET` | `/account/access` | Your container access: `access` (`none`, `pending`, `approved`, `rejected`), `runtime` (`gvisor` or `native`), `vcluster` (`none`, `creating`, `ready`, `failed`, `deleting`), `reason`, `note`, `requested_at`, `decided_at`. |
+| `POST` | `/account/access/request` | Request container access. Body: `{"reason": "..."}` (1 to 1000 characters). `409` if the request is pending or approved. |
 
 ## Projects
 
@@ -24,8 +26,8 @@ Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token. See [
 | `POST` | `/projects` | Create a project. Body: `{"name": "..."}`. |
 | `GET` | `/projects/{p}` | Get a project. |
 | `PATCH` | `/projects/{p}` | Rename a project. Body: `{"name": "..."}`. |
-| `DELETE` | `/projects/{p}` | Delete a project. Owner only (`403` for a member). It must have no VMs and no AI keys. Returns `202`. |
-| `GET` | `/projects/{p}/usage` | vCPU, memory, disk and AI spend of the project owner, against the owner's limits. |
+| `DELETE` | `/projects/{p}` | Delete a project. Owner only (`403` for a member). It must have no VMs, no containers and no AI keys. Returns `202`. |
+| `GET` | `/projects/{p}/usage` | vCPU and memory (VMs and containers), disk and AI spend of the project owner, against the owner's limits. |
 
 ## Project members
 
@@ -75,6 +77,53 @@ VM object:
   "created_at": "2026-10-08T12:00:00+00:00"
 }
 ```
+
+## Registry credentials
+
+Saved on your account, not on a project. Up to 10. See [Registry credentials](/containers/registry-credentials/).
+
+| Method | Path | Use |
+|---|---|---|
+| `GET` | `/registry-credentials` | List credentials: `id`, `name`, `host`, `username`, `created_at`. The token is never returned. |
+| `POST` | `/registry-credentials` | Add a credential. Body: `{"name": "...", "host": "ghcr.io", "username": "...", "token": "..."}`. Returns `201`. `409` if the name exists. |
+| `DELETE` | `/registry-credentials/{k}` | Delete a credential. Returns `204`. `409` if a container uses it. |
+
+## Containers
+
+The project owner's account must have access (`403 not_allowed` if not). See [Containers](/containers/overview/).
+
+| Method | Path | Use |
+|---|---|---|
+| `GET` | `/projects/{p}/containers` | List containers. |
+| `POST` | `/projects/{p}/containers` | Create a container. Body: `{"name": "...", "type": "worker", "image": "...", "size": "pms-c-250m-512", "registry_credential_id": null, "env": {"NAME": "value"}, "runtime": "gvisor"}`. `runtime` is optional (default `gvisor`); `native` needs an account with `runtime: native` (else `403 native_not_allowed`). Returns `202`. |
+| `GET` | `/projects/{p}/containers/{c}` | Get a container. |
+| `PATCH` | `/projects/{p}/containers/{c}` | Change `image`, `size`, `registry_credential_id`, `env` or `runtime`. `env` replaces all variables. Restarts the container. Returns `202`. |
+| `DELETE` | `/projects/{p}/containers/{c}` | Delete a container. Returns `202`. |
+| `POST` | `/projects/{p}/containers/{c}/actions` | Body: `{"action": "start" \| "stop" \| "restart"}`. Returns `202`. |
+| `GET` | `/projects/{p}/containers/{c}/logs?tail=200&previous=false` | The last log lines (`tail` 1 to 2000). `previous=true`: the run before the last restart. Returns `{"lines": [{"time": "...", "message": "..."}]}`. |
+
+Container object (env values are never returned):
+
+```json
+{
+  "id": "ctr_...",
+  "name": "bot",
+  "type": "worker",
+  "image": "ghcr.io/owner/bot:1.0",
+  "size": "pms-c-250m-512",
+  "vcpu": 0.25,
+  "memory_mib": 512,
+  "registry_credential_id": null,
+  "env_names": ["DISCORD_TOKEN"],
+  "runtime": "gvisor",
+  "status": "running",
+  "status_message": null,
+  "created_at": "2026-10-10T12:00:00+00:00",
+  "updated_at": "2026-10-10T12:00:00+00:00"
+}
+```
+
+`status`: `provisioning`, `running`, `stopped`, `failed`, `deleting` or `unknown`.
 
 ## AI keys
 

@@ -35,11 +35,15 @@ Usage in a shared project counts against the project owner. See [Project members
 | AI spend for each account | $5 for each calendar month (UTC) |
 | Budget for each key | You set it: $0 to $100,000, for all time |
 
-## Containers (coming soon)
+## Containers
+
+Each account needs approval. See [Containers](/containers/overview/).
 
 | Limit | Value |
 |---|---|
 | Containers | 2 |
+| Sizes | 0.25 vCPU / 512 MiB, or 0.5 vCPU / 1 GiB |
+| Registry credentials | 10 |
 | vCPU and memory | Shared with VMs (see above) |
 | Disk | None. Containers are stateless. |
 | Inbound traffic | None. Workers only. |
