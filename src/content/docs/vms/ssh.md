@@ -8,7 +8,7 @@ sidebar:
 VMs have a private IP only. You connect through the jump host `jump.pmservers.org`. The jump host goes through Cloudflare over HTTPS, so it works on most networks, also where port 22 is blocked.
 
 :::note[PMS CLI]
-The jump host needs `cloudflared` on your computer. A future PMS CLI will do this setup for you.
+The [PMS CLI](/cli/install/) does this setup for you. Run `pms vm ssh <vm>`. If `cloudflared` is missing, the CLI asks, then downloads it. Use `-i <key>` for a key file and `-u <user>` for the login user. Add `-- <command>` to run a command. `pms ssh-config` prints an SSH config for the jump host and your VMs. The steps below show the manual way.
 :::
 
 ## What you need
