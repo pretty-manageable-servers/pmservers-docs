@@ -60,5 +60,5 @@ Press Ctrl-C to stop. The CLI closes the tunnel and the local port.
 ## Problems
 
 - **Permission denied (publickey)**: the key is not saved on your account and not a VM key. Add it with `pms ssh-key add`, or give it with `-i`.
-- **Address already in use**: the local port is in use. Give another port with `--port`.
+- **Local port 5432 is not free**: another program uses the port. Give another port with `--port`.
 - **password authentication failed**: the password is wrong or was reset. Run `pms db reset-password <database>`.
