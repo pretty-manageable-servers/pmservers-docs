@@ -7,6 +7,16 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-10
 
+### Edit single environment variables
+
+You can now change one environment variable of a container without typing the others again.
+
+- In the console, the edit form shows a row for each variable. Type a value to change it. Select **Remove** to delete it. Select **Add variable** to add one. The other variables keep their values.
+- The CLI has `pms container edit <name> --set-env KEY=VALUE --unset-env KEY` (CLI 0.4.0). `--env` still replaces all variables.
+- API: `env_set` and `env_unset` on update. `env` still replaces all.
+
+See [Containers](/containers/overview/).
+
 ### Container private ports
 
 A container can now open up to 5 private TCP ports.

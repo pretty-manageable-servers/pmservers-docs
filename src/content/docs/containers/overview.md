@@ -61,7 +61,8 @@ After you save a variable, nobody can read its value again, also not in the cons
 
 - **Stop**, **Start** and **Restart** are in the container's side panel.
 - **Edit** changes the image, size, registry credential, ports or environment variables. Each change restarts the container.
-- To change environment variables, you give **all** variables again. The new set replaces the old set.
+- To change environment variables, you change only the variables that you want. In the edit form, each variable has a row. Type a value to change it. Leave the value empty to keep it. Select **Remove** to delete a variable. Select **Add variable** to add a new one. The other variables keep their values.
+- With the `pms` CLI, use `pms container edit <name> --set-env KEY=VALUE --unset-env KEY`. Repeat a flag for more variables. `--env` and `--env-file` replace **all** variables.
 
 ## Logs
 
