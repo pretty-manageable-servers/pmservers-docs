@@ -7,6 +7,25 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-10
 
+### Free AI budget is now $3
+
+The free tier AI budget is now $3 for each account, each calendar month (UTC). Before, it was $5. If your account spent $3 or more this month, AI requests return `402 budget_exceeded` until the 1st of next month.
+
+### Databases
+
+You can now make Postgres databases.
+
+- Postgres 18. Select **Enable vector** to turn on pgvector.
+- No approval needed. 1 database and 1 GiB of storage for each account.
+- Private access only: the containers of your account can connect. No public address.
+- The password is shown one time. **Reset password** makes a new one.
+- At the storage limit, the database is read-only. At 150%, connections are blocked.
+- No backups. Use `pg_dump` to keep your own copy.
+- API: `/v1/projects/{project_id}/databases`.
+- A project with a database cannot be deleted. Delete the databases first.
+
+See [Databases](/databases/overview/).
+
 ### Containers
 
 You can now run worker containers.

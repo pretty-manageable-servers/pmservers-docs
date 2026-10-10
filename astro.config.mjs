@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'PMS Cloud Docs',
-      description: 'Documentation for PMS Cloud: VMs, containers, storage and an OpenAI-compatible AI API.',
+      description: 'Documentation for PMS Cloud: VMs, containers, Postgres databases, storage and an OpenAI-compatible AI API.',
       favicon: '/favicon.svg',
       logo: { src: './src/assets/logo.svg', alt: 'PMS Cloud' },
       customCss: [
@@ -62,6 +62,7 @@ export default defineConfig({
               { label: 'Get started', items: [{ autogenerate: { directory: 'get-started' } }] },
               { label: 'VMs', items: [{ autogenerate: { directory: 'vms' } }] },
               { label: 'Containers', items: [{ autogenerate: { directory: 'containers' } }] },
+              { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },
               { label: 'Storage', items: [{ autogenerate: { directory: 'storage' } }] },
               { label: 'Billing and limits', items: [{ autogenerate: { directory: 'billing' } }] },
               { label: 'For agents', items: ['agents'] },

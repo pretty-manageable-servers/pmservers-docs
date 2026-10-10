@@ -32,7 +32,7 @@ Usage in a shared project counts against the project owner. See [Project members
 |---|---|
 | AI keys | 5 |
 | Requests for each key | 60 each minute |
-| AI spend for each account | $5 for each calendar month (UTC) |
+| AI spend for each account | $3 for each calendar month (UTC) |
 | Budget for each key | You set it: $0 to $100,000, for all time |
 
 ## Containers
@@ -48,6 +48,18 @@ Each account needs approval. See [Containers](/containers/overview/).
 | Disk | None. Containers are stateless. |
 | Inbound traffic | None. Workers only. |
 
+## Databases
+
+No approval needed. See [Databases](/databases/overview/).
+
+| Limit | Value |
+|---|---|
+| Databases | 1 |
+| Size | 0.25 vCPU / 512 MiB |
+| Storage, all databases together | 1 GiB. Read-only at 100%, connections blocked at 150%. See [Storage limit](/databases/storage-limit/). |
+| vCPU and memory | Shared with VMs and containers (see above) |
+| Backups | None |
+
 ## S3 storage (coming soon)
 
 | Limit | Value |
@@ -59,4 +71,4 @@ Each account needs approval. See [Containers](/containers/overview/).
 - Management API: `409` with code `quota_exceeded`.
 - AI API: `402 budget_exceeded` or `429 rate_limit_exceeded`.
 
-To ask for higher limits, contact support.
+To ask for higher limits, contact enterprise support.

@@ -32,7 +32,7 @@ A request with no `usage` in the answer bills nothing.
 
 | Budget | Period |
 |---|---|
-| Account | $5 for each calendar month (UTC). All keys together. It resets on the 1st of the month at 00:00 UTC. |
+| Account | $3 for each calendar month (UTC). All keys together. It resets on the 1st of the month at 00:00 UTC. |
 | Key | You set it. It counts the total spend of the key, for all time. |
 
 When a budget is spent, requests fail with `402 budget_exceeded`. Requests that started before can complete, so the spend can go a little over the budget.

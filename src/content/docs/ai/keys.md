@@ -26,7 +26,7 @@ The full key shows **one time only**. After that, the console shows only the sta
 | Keys for each account | 5 |
 | Rate limit for each key | 60 requests each minute |
 | Key budget | The total spend of the key, for all time. |
-| Account budget | $5 for each calendar month (UTC), all keys together. |
+| Account budget | $3 for each calendar month (UTC), all keys together. |
 
 A request fails with `402 budget_exceeded` when the key budget **or** the account budget is spent.
 
