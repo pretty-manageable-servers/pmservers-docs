@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Only containers of the same account can connect to a database. See [Private access only](/databases/overview/#private-access-only).
+Only containers of the same project can connect to a database. See [Private access only](/databases/overview/#private-access-only).
 
 ## 1. Add the URL to the container
 
@@ -47,7 +47,7 @@ Just after a container starts, the first connection can fail for a few seconds. 
 
 | Error | Cause |
 |---|---|
-| `could not translate host name` | The container is in a different account, or it just started. Retry. |
+| `could not translate host name` | The container is in a different project, or it just started. Retry. |
 | `password authentication failed` | The password was reset. Use the new URL. |
 | `cannot execute ... in a read-only transaction` | The account is at the storage limit. See [Storage limit](/databases/storage-limit/). |
 | `too many connections for role "app"` | The database is suspended. See [Storage limit](/databases/storage-limit/). |

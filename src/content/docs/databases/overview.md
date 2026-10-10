@@ -46,10 +46,10 @@ See [Connect from a container](/databases/connect/).
 
 ## Private access only
 
-A database has no public address. Only the containers of the **same account** can connect to it. You cannot connect from your computer or from the internet.
+A database has no public address. Only the containers of the **same project** can connect to it. Containers in other projects of your account cannot. You cannot connect from your computer or from the internet.
 
 - Containers need approval for each account. See [Containers](/containers/overview/).
-- Access from VMs is not available yet.
+- Access from VMs is not available.
 
 ## The `app` user
 

@@ -7,6 +7,21 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-10
 
+### Container private ports
+
+A container can now open up to 5 private TCP ports.
+
+- Set **Ports** when you create or edit a container. The CLI has `--port` and `--clear-ports`.
+- Other containers in the **same project** connect to `<name>:<port>`. The container page shows the internal address.
+- No public address. VMs and other projects cannot connect.
+- API: `ports` on create and update, and `ports` and `internal_host` in the container.
+
+### Databases: same project only
+
+A database can now be reached only from containers in the **same project**. Before, containers in any project of the account could connect. If a container in another project uses a database, move one of them to the same project.
+
+See [Private ports](/containers/private-ports/) and [Databases](/databases/overview/).
+
 ### Free AI budget is now $3
 
 The free tier AI budget is now $3 for each account, each calendar month (UTC). Before, it was $5. If your account spent $3 or more this month, AI requests return `402 budget_exceeded` until the 1st of next month.

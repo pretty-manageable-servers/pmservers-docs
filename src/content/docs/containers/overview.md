@@ -1,6 +1,6 @@
 ---
 title: Containers
-description: Worker containers with no inbound traffic and no disk. linux/amd64 images, run as a non-root user, on gVisor. Each account needs approval.
+description: Worker containers with private ports for the same project, no public address and no disk. linux/amd64 images, run as a non-root user, on gVisor. Each account needs approval.
 sidebar:
   order: 1
 ---
@@ -19,11 +19,12 @@ In a shared project, the **project owner's** account must have access. A member 
 
 ## Workers only
 
-A container is a **worker**. It runs all the time and connects out only.
+A container is a **worker**. It runs all the time.
 
-- No port, no URL, no inbound traffic.
-- Good for: a Discord bot, a queue worker, a scheduled job runner.
-- Not for: a website or an HTTP API.
+- No public address and no URL. Nothing from the internet can connect to it.
+- Optional private ports: other containers in the **same project** can connect. See [Private ports](/containers/private-ports/).
+- Good for: a Discord bot, a queue worker, a scheduled job runner, a helper service for another container.
+- Not for: a website or an HTTP API for the public.
 
 ## Create a container
 
@@ -35,6 +36,7 @@ In the console, open **Containers**, then select **Create container**. Give:
 | Image | For example `ghcr.io/owner/app:1.0`. With no host, the image is from Docker Hub (`docker.io`). |
 | Size | 0.25 vCPU / 512 MiB, or 0.5 vCPU / 1 GiB. |
 | Registry credential | Optional. Only for a private image. See [Registry credentials](/containers/registry-credentials/). |
+| Ports | Optional. 5 at most, from 1 to 65535. See [Private ports](/containers/private-ports/). |
 | Environment variables | Optional. 50 at most, 32 KiB in total. Names: letters, digits and `_`, not a digit first. |
 
 After you save a variable, nobody can read its value again, also not in the console. The console shows only the names.
@@ -58,7 +60,7 @@ After you save a variable, nobody can read its value again, also not in the cons
 ## Change a container
 
 - **Stop**, **Start** and **Restart** are in the container's side panel.
-- **Edit** changes the image, size, registry credential or environment variables. Each change restarts the container.
+- **Edit** changes the image, size, registry credential, ports or environment variables. Each change restarts the container.
 - To change environment variables, you give **all** variables again. The new set replaces the old set.
 
 ## Logs
@@ -90,4 +92,9 @@ If your app does not work on gVisor, ask support for native containers. The team
 
 ## Network
 
-Containers can connect to the public internet only.
+A container can connect to:
+
+- The public internet.
+- Containers and databases in the **same project**. See [Private ports](/containers/private-ports/).
+
+A container cannot connect to a container or database in another project, also if both are in your account. VMs cannot connect to containers.
