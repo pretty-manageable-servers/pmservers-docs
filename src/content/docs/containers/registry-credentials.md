@@ -10,12 +10,12 @@ A registry credential lets a container pull a private image. Public images need 
 ## Add a credential
 
 1. In the console, open **Settings**, then **Registry credentials**.
-2. Select **Add credential**. Give:
+2. Fill in the form:
    - **Name**: your name for it.
    - **Host**: the registry host, for example `ghcr.io` or `docker.io`.
    - **Username**: your registry user name.
    - **Token**: a token that can read packages. For GitHub, use a token with the `read:packages` scope.
-3. Select **Save**.
+3. Select **Save credential**.
 
 After you save it, nobody can read the token again, also not in the console. To change a token, delete the credential and add it again.
 
