@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token. See [API overview](/api/overview/).
+Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token or a [project token](/api/tokens/). See [API overview](/api/overview/).
 
 `{p}` is a project ID. `{vm}`, `{c}` and `{k}` are resource IDs. Lists return `{"items": [...]}`.
 
