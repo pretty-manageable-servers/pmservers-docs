@@ -101,6 +101,8 @@ site-search button[data-open-modal] {
   border-radius: 0.5rem;
   border-color: var(--sl-color-gray-5);
   background: var(--pms-surface);
+  /* Same height as the Console button, so it does not touch the header line. */
+  height: 2rem;
 }
 
 /* Sidebar */
@@ -335,5 +337,5 @@ starlight-toc a[aria-current='true'] {
   max-width: none;
 }
 [data-has-hero] .sl-container {
-  max-width: 76rem;
+  max-width: 69rem;
 }

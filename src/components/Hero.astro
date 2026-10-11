@@ -38,30 +38,39 @@ const curl = `curl https://api.pmservers.org/ai/v1/chat/completions \\
 const products = [
   {
     title: 'VMs',
-    text: 'Ubuntu VMs with a browser console. Pick a size, add an SSH key, and start.',
-    link: '/vms/create/',
+    text: 'Ubuntu VMs with a browser console and SSH. Pick a size, add a key, and start.',
+    link: '/get-started/first-vm/',
     icon: 'M4 5h16v10H4zM8 19h8M12 15v4',
   },
   {
-    title: 'AI API',
-    text: 'OpenAI-compatible chat, embeddings and decisions. Billed by token.',
-    link: '/ai/overview/',
-    icon: 'M8 9l-3 3 3 3M16 9l3 3-3 3M13.5 7l-3 10',
-  },
-  {
     title: 'Containers',
-    text: 'Always-on workers that connect out. No disk, no inbound traffic.',
+    text: 'Always-on workers from any image. Private ports to other containers in the project.',
     link: '/containers/overview/',
     icon: 'M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8M12 12v8',
   },
   {
-    title: 'S3 storage',
-    text: 'S3-compatible buckets. Works with the AWS CLI, boto3 and rclone.',
-    link: '/storage/s3/',
+    title: 'Databases',
+    text: 'Postgres, with optional pgvector. Private to the containers in your account.',
+    link: '/databases/overview/',
     icon: 'M5 6c0-1.1 3.1-2 7-2s7 .9 7 2-3.1 2-7 2-7-.9-7-2zM5 6v12c0 1.1 3.1 2 7 2s7-.9 7-2V6M5 12c0 1.1 3.1 2 7 2s7-.9 7-2',
-    soon: true,
+  },
+  {
+    title: 'AI API',
+    text: 'OpenAI-compatible chat, embeddings and decisions. Billed by token.',
+    link: '/get-started/first-ai-request/',
+    icon: 'M8 9l-3 3 3 3M16 9l3 3-3 3M13.5 7l-3 10',
   },
 ];
+
+// Small line icons for the buttons, 16 by 16.
+const icons = {
+  play: '<path d="M5 3.5v9l7-4.5z"/>',
+  key: '<circle cx="5.5" cy="10.5" r="2.5"/><path d="m7.3 8.7 5.2-5.2M10.5 5.5l1.5 1.5M9 7l1.2 1.2"/>',
+  braces:
+    '<path d="M6 2.5c-1.5 0-2 .7-2 2V6c0 1-.5 2-1.5 2 1 0 1.5 1 1.5 2v1.5c0 1.3.5 2 2 2M10 2.5c1.5 0 2 .7 2 2V6c0 1 .5 2 1.5 2-1 0-1.5 1-1.5 2v1.5c0 1.3-.5 2-2 2"/>',
+};
+const icon = (name: keyof typeof icons) =>
+  `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
 ---
 
 <section class="hero">
@@ -69,7 +78,7 @@ const products = [
     <p class="eyebrow">PMS Cloud</p>
     <h1 id="_top">Build on<br />PMS Cloud</h1>
     <p class="tagline">
-      VMs, containers and an OpenAI-compatible AI API. Docs for people, and for the agents that work with them.
+      VMs, containers, databases and an OpenAI-compatible AI API. Docs for people, and for the agents that work with them.
     </p>
     <button type="button" class="search" data-open-search>
       <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
@@ -80,9 +89,9 @@ const products = [
       <kbd data-search-key>Ctrl K</kbd>
     </button>
     <div class="actions">
-      <a href="/get-started/overview/">Quickstart</a>
-      <a href="https://console.pmservers.org">Get an API key</a>
-      <a href="/api/overview/">API reference</a>
+      <a href="/get-started/overview/"><Fragment set:html={icon('play')} />Quickstart</a>
+      <a href="/ai/keys/"><Fragment set:html={icon('key')} />Get an API key</a>
+      <a href="/api/overview/"><Fragment set:html={icon('braces')} />API reference</a>
     </div>
   </div>
   <div class="code-panel" data-code-tabs>
@@ -95,7 +104,7 @@ const products = [
 <section class="products">
   <p class="eyebrow">Products</p>
   <h2>Choose what you build</h2>
-  <p class="section-text">Start with a VM or the AI API. Storage comes next.</p>
+  <p class="section-text">Pick a product. Each one has a quickstart. S3 storage comes next.</p>
   <div class="cards">
     {
       products.map((product) => (
@@ -106,11 +115,9 @@ const products = [
             </svg>
           </div>
           <div class="card-body">
-            <h3>
-              {product.title}
-              {product.soon && <span class="soon">Coming soon</span>}
-            </h3>
+            <h3>{product.title}</h3>
             <p>{product.text}</p>
+            <span class="card-link"><Fragment set:html={icon('play')} />Quickstart</span>
           </div>
         </a>
       ))
@@ -197,6 +204,9 @@ const products = [
     margin-top: 1.25rem;
   }
   .actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.4rem 0.8rem;
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.5rem;
@@ -269,13 +279,16 @@ const products = [
     font-size: var(--sl-text-sm);
     line-height: 1.5;
   }
-  .soon {
-    padding: 0.05rem 0.45rem;
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 999px;
-    color: var(--sl-color-gray-3);
-    font-size: 0.75rem;
-    font-weight: 400;
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+  .card:hover .card-link {
+    color: var(--sl-color-white);
   }
 
   @media (min-width: 50rem) {
