@@ -5,6 +5,18 @@ description: Changes to PMS Cloud, newest first. We release changes when they ar
 
 PMS Cloud changes all the time. We release a change when it is ready. Each entry has the date it went live, newest first.
 
+## 2026-10-11
+
+### Managed Cloudflare Tunnels (beta)
+
+You can now publish a container through a Cloudflare Tunnel in your own Cloudflare account. Create a remotely managed tunnel in Cloudflare, set its origin to the URL that PMS shows, and give PMS only the connector token. PMS runs the `cloudflared` connector beside your container and shows if it is connected.
+
+- Set it in the dashboard, or with `pms container create` or `pms container edit` and `--tunnel-port` with `--tunnel-token-file` or `--tunnel-token-stdin`.
+- Each connector uses 0.05 vCPU and 128 MiB of your compute limit while it is attached.
+- The tunnel can reach any service in the same project. Use a separate project to limit this.
+
+This feature is in beta. Tell us if something does not work. See [Managed Cloudflare Tunnels](/containers/managed-tunnels/).
+
 ## 2026-10-10
 
 ### CLI sign-in with a code
