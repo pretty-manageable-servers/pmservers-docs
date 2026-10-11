@@ -16,6 +16,14 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 See [Sign in and choose a project](/cli/sign-in/).
 
+### AI key budget limit
+
+The budget of an AI key can no longer be more than the monthly AI budget of your account. If you create or edit a key with a higher budget, the API returns `validation_error`. Keys made before this change keep their budget.
+
+### AI gateway errors during an outage
+
+If the AI gateway cannot check your key because of an internal problem, it now returns `503`. Before, it could return `401`, which looked like a bad key. Try again later when you get `503`.
+
 ### Edit single environment variables
 
 You can now change one environment variable of a container without typing the others again.
