@@ -3,8 +3,6 @@ title: PMS Cloud Docs
 description: Start here. What PMS Cloud has, and where to find each topic.
 template: splash
 # The page uses its own hero (src/components/Hero.astro).
-hero:
-  title: Build on PMS Cloud
 ---
 
 ## Using an agent?

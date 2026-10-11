@@ -99,10 +99,15 @@ const menu = [
 <script>
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-markdown]')) {
     button.addEventListener('click', async () => {
-      const response = await fetch(button.dataset.copyMarkdown!);
-      await navigator.clipboard.writeText(await response.text());
       const label = button.querySelector('[data-label]')!;
-      label.textContent = 'Copied';
+      try {
+        const response = await fetch(button.dataset.copyMarkdown!);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        await navigator.clipboard.writeText(await response.text());
+        label.textContent = 'Copied';
+      } catch {
+        label.textContent = 'Copy failed';
+      }
       setTimeout(() => (label.textContent = 'Copy page'), 1500);
     });
   }
@@ -242,6 +247,12 @@ const menu = [
   @media (max-width: 40rem) {
     .title-row {
       flex-direction: column;
+    }
+    /* The button is at the left edge here: open the menu to the right. */
+    .menu {
+      right: auto;
+      left: 0;
+      max-width: calc(100vw - 2rem);
     }
   }
 </style>
