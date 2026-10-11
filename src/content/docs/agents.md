@@ -15,7 +15,7 @@ https://docs.pmservers.org/llms.txt
 |---|---|
 | `/llms.txt` | An index of all pages, with a one-line summary each. Format: [llmstxt.org](https://llmstxt.org/). |
 | `/llms-full.txt` | All pages in one Markdown file. |
-| `/<page>.md` | One page as raw Markdown. Add `.md` to the page path, for example `/vms/ssh.md`. |
+| `/<page>.md` | One page as raw Markdown. Add `.md` to the page path, for example `/containers/overview.md`. |
 | `/openapi.json` | The OpenAPI 3.1 spec of the AI API. |
 
 Each page in the browser also has a **Copy page** button. Its menu has **Copy page as Markdown**, **View as Markdown**, **Open in ChatGPT**, **Open in Claude** and **Open in Slopbot**.
@@ -28,7 +28,7 @@ sends a chat request to PMS Cloud with the model cirrus.
 ```
 
 ```
-Read https://docs.pmservers.org/llms-full.txt. Then tell me which VM sizes fit in
+Read https://docs.pmservers.org/llms-full.txt. Then tell me which container sizes fit in
 the PMS Cloud free tier.
 ```
 

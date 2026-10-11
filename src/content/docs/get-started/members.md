@@ -11,11 +11,11 @@ You can invite other people to a project. They get access at once.
 
 | Action | Owner | Member |
 |---|---|---|
-| See and use VMs, AI keys and activity | Yes | Yes |
-| Create, start, stop and delete VMs | Yes | Yes |
+| See and use containers, databases, AI keys and activity | Yes | Yes |
+| Create, start, stop and delete containers | Yes | Yes |
 | Create, rotate and revoke AI keys | Yes | Yes |
 | Rename the project | Yes | Yes |
-| SSH to the VMs of the project | Yes | Yes |
+| Connect to the databases of the project with `pms db connect` | Yes | Yes |
 | Invite and remove members | Yes | No |
 | Leave the project | No | Yes |
 | Delete the project | Yes | No |
@@ -24,7 +24,7 @@ The person who creates a project is its owner. A project has one owner. You cann
 
 ## Usage and limits
 
-All usage in a project counts against the owner's account. This includes the VMs and AI keys that a member creates, and the AI spend of all keys in the project.
+All usage in a project counts against the owner's account. This includes the containers, databases and AI keys that a member creates, and the AI spend of all keys in the project.
 
 The owner's limits apply. A member's own limits do not add to them. See [Limits](/billing/limits/).
 
@@ -43,11 +43,11 @@ A project can have up to 20 members.
 - The owner clicks **Remove** next to a member.
 - A member clicks **Leave** next to their own email.
 
-The VMs and AI keys stay in the project. AI keys keep working. To stop a key, revoke or rotate it.
+The containers, databases and AI keys stay in the project. AI keys keep working. To stop a key, revoke or rotate it.
 
 ## SSH
 
-Each member uses their own SSH keys. Your saved keys and the key that you gave at VM create can reach the VMs of all projects where you are the owner or a member. See [SSH](/vms/ssh/).
+The jump host accepts only SSH keys saved on your account. Add a key with `pms ssh-key add`. Your saved keys can reach the databases of all projects where you are the owner or a member. See [Connect from your computer](/databases/connect-from-your-computer/).
 
 ## API
 

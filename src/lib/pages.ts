@@ -7,7 +7,6 @@ const SECTION_ORDER = [
   '',
   'get-started',
   'cli',
-  'vms',
   'containers',
   'databases',
   'sandboxes',
@@ -39,14 +38,14 @@ export async function getPages(): Promise<DocsPage[]> {
   );
 }
 
-/** The path of the raw Markdown file for a page, for example `/vms/ssh.md`. */
+/** The path of the raw Markdown file for a page, for example `/containers/overview.md`. */
 export function markdownPath(id: string): string {
   return id === 'index' || id === '' ? '/index.md' : `/${id}.md`;
 }
 
 /**
  * Makes root-relative links absolute. A link to a page points at its Markdown file.
- * Example: `](/vms/ssh/#keys)` becomes `](https://docs.pmservers.org/vms/ssh.md#keys)`.
+ * Example: `](/databases/connect-from-your-computer/#options)` becomes `](https://docs.pmservers.org/databases/connect-from-your-computer.md#options)`.
  */
 export function absoluteLinks(markdown: string, site: URL | undefined): string {
   const base = (site ?? new URL('https://docs.pmservers.org')).origin;

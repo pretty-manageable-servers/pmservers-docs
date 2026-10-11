@@ -8,7 +8,7 @@ export const GET: APIRoute = async ({ site }) => {
   const lines = [
     '# PMS Cloud',
     '',
-    '> PMS Cloud (PMServers) is a small cloud provider. It has VMs, containers, Postgres databases (with pgvector) and an OpenAI-compatible AI API. The console is https://console.pmservers.org. The API is https://api.pmservers.org.',
+    '> PMS Cloud (PMServers) is a small cloud provider. It has containers, Postgres databases (with pgvector) and an OpenAI-compatible AI API. The console is https://console.pmservers.org. The API is https://api.pmservers.org.',
     '',
     `Each link below is a raw Markdown file. All pages in one file: ${link('/llms-full.txt')}`,
     `OpenAPI spec of the AI API: ${link('/openapi.json')}`,

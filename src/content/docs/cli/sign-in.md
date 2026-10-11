@@ -54,7 +54,7 @@ pms project create my-project --use
 The default output is a table. For scripts, use JSON:
 
 ```sh
-pms vm list -o json
+pms container list -o json
 ```
 
 You can also set `PMS_OUTPUT=json`.

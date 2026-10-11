@@ -55,7 +55,6 @@ A private port is reachable only from other containers in the **same project**.
 | A container in the same project | Yes |
 | A managed tunnel connector attached to a container in the project | Yes, to any service in that project |
 | A container in another project, also in your account | No |
-| A VM | No |
 | Your computer or the internet | No |
 
 A container name that has ports must be different from the name of a database in the same project.
