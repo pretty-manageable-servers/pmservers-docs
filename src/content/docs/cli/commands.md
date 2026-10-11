@@ -66,12 +66,13 @@ pms ssh-key delete <id>
 pms container list
 pms container show <container>
 pms container create <name> --image <image> --size <size> [--registry-credential <cred>] [--runtime gvisor|native] [--port <port> ...] [-e KEY=VALUE ...] [--env-file <file>]
-pms container edit <container> [--image ...] [--size ...] [--port <port> ... | --clear-ports] [--clear-env]
+pms container edit <container> [--image ...] [--size ...] [--port <port> ... | --clear-ports] [--set-env KEY=VALUE ...] [--set-env-file <file>] [--unset-env KEY ...]
+pms container edit <container> [-e KEY=VALUE ... | --env-file <file> | --clear-env]
 pms container start|stop|restart|delete <container> [--wait]
 pms container logs <container> [--tail N] [--previous] [--follow]
 ```
 
-An edit redeploys the container. See [Containers](/containers/overview/) and [Private ports](/containers/private-ports/).
+An edit redeploys the container. `--set-env` and `--unset-env` change only the named variables (CLI 0.4.0). `-e`, `--env-file` and `--clear-env` replace **all** variables. You cannot use both kinds in one edit. See [Containers](/containers/overview/) and [Private ports](/containers/private-ports/).
 
 ## Registry credentials
 
