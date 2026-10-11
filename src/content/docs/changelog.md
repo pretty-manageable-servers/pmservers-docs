@@ -7,6 +7,15 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-10
 
+### CLI sign-in with a code
+
+`pms login` now uses device login (CLI 0.5.0). The CLI prints a short code and opens the sign-in page. Sign in with GitHub and allow the code. This also works over SSH and in containers: run `pms login --no-browser` and open the URL on another device.
+
+- `--port` is removed. The CLI no longer starts a local server for the sign-in.
+- `pms login --email` does not change.
+
+See [Sign in and choose a project](/cli/sign-in/).
+
 ### Edit single environment variables
 
 You can now change one environment variable of a container without typing the others again.
