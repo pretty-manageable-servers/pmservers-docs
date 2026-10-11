@@ -24,7 +24,7 @@ Each page in the browser also has a **Copy page** button. Its menu has **Copy pa
 
 ```
 Read https://docs.pmservers.org/llms.txt. Then write a Python script that
-sends a chat request to PMS Cloud with the model gemma4-e4b.
+sends a chat request to PMS Cloud with the model cirrus.
 ```
 
 ```
@@ -36,6 +36,6 @@ the PMS Cloud free tier.
 
 - The AI API is OpenAI-compatible. Use base URL `https://api.pmservers.org/ai/v1` and the key in `PMS_API_KEY`.
 - Never put an AI key in code that runs in a browser.
-- `kev` works only on `POST /ai/v1/systemone`.
+- `vane` works only on `POST /ai/v1/systemone`.
 - For long answers, use `"stream": true`.
 - Retry `429`, `502` and `504` with backoff. Do not retry `402`.

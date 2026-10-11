@@ -238,7 +238,9 @@
         "enum": [
           "llm",
           "embedding",
-          "decision"
+          "decision",
+          "stt",
+          "tts"
         ],
         "title": "AiModelType",
         "type": "string"

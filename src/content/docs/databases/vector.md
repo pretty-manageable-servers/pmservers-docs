@@ -1,13 +1,13 @@
 ---
 title: Vector search
-description: Store embeddings in a pgvector column and find the nearest rows. Example with the embeddinggemma2 model of the PMS AI API (768 dimensions).
+description: Store embeddings in a pgvector column and find the nearest rows. Example with the stratus model of the PMS AI API (768 dimensions).
 sidebar:
   order: 3
 ---
 
 First select **Enable vector** on the database. See [Vector](/databases/overview/#vector).
 
-This example stores text with an embedding from the `embeddinggemma2` model. That model returns 768 dimensions. See [Models](/ai/models/).
+This example stores text with an embedding from the `stratus` model. That model returns 768 dimensions. See [Models](/ai/models/).
 
 ## Make a table
 
@@ -33,7 +33,7 @@ from openai import OpenAI
 ai = OpenAI(base_url="https://api.pmservers.org/ai/v1", api_key=os.environ["PMS_API_KEY"])
 
 def embed(text: str) -> str:
-    vector = ai.embeddings.create(model="embeddinggemma2", input=text).data[0].embedding
+    vector = ai.embeddings.create(model="stratus", input=text).data[0].embedding
     return "[" + ",".join(str(x) for x in vector) + "]"
 
 with psycopg.connect(os.environ["DATABASE_URL"]) as conn:

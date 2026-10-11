@@ -20,9 +20,11 @@ The AI API is OpenAI-compatible. Use any OpenAI SDK or tool. Change only the bas
 | `GET /ai/v1/models` | List the models that your key can use. | all |
 | `POST /ai/v1/chat/completions` | Chat. Supports `"stream": true`. | `llm` |
 | `POST /ai/v1/embeddings` | Embeddings. | `embedding` |
-| `POST /ai/v1/systemone` | Decisions with the `kev` model. Not OpenAI format. See [Kev](/ai/kev/). | `decision` |
+| `POST /ai/v1/systemone` | Decisions with the `vane` model. Not OpenAI format. See [Vane](/ai/vane/). | `decision` |
+| `POST /ai/v1/audio/transcriptions` | Speech to text. WAV files only. | `stt` |
+| `POST /ai/v1/audio/speech` | Text to speech. Output is WAV. | `tts` |
 
-A model works only on the endpoint for its type. For example, `kev` does not work on `/chat/completions`.
+A model works only on the endpoint for its type. For example, `vane` does not work on `/chat/completions`.
 
 ## Streaming
 
@@ -32,7 +34,7 @@ The last chunk of a stream has `usage` if you send `"stream_options": {"include_
 
 ## Reasoning tokens
 
-`qwen3.8-flash-next` is a reasoning model. `completion_tokens` includes the reasoning tokens. `max_tokens` does not limit the reasoning.
+`nimbus` is a reasoning model. `completion_tokens` includes the reasoning tokens. `max_tokens` does not limit the reasoning.
 
 ## More
 
