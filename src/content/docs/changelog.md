@@ -7,6 +7,13 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### Dashboard navigation on mobile
+
+We fixed bugs with the dashboard on mobile. Before, on a narrow screen, some sections were off the side of the screen and you could not easily get to them.
+
+- When the sections do not fit on one line, the dashboard shows a menu button. The menu has all sections, Docs, and Change theme.
+- Each section now has an icon.
+
 ### Managed Cloudflare Tunnels (beta)
 
 You can now publish a container through a Cloudflare Tunnel in your own Cloudflare account. Create a remotely managed tunnel in Cloudflare, set its origin to the URL that PMS shows, and give PMS only the connector token. PMS runs the `cloudflared` connector beside your container and shows if it is connected.
