@@ -7,6 +7,30 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### Sandboxes (beta)
+
+You can now run code in sandboxes on PMS Cloud. The sandbox API is compatible with E2B, so you use the official `e2b` SDK for Python or JavaScript. Change only three environment variables:
+
+- `E2B_API_KEY`: a PMS API token (see below).
+- `E2B_API_URL=https://api.pmservers.org/sandboxes`
+- `E2B_SANDBOX_URL=https://sandbox.pmservers.org`
+
+Each sandbox has 0.5 vCPU and 512 MiB, runs on gVisor, and has internet access. You can run 4 sandboxes at the same time. Your account must be approved. The first sandbox of your account can take up to about 35 seconds and can return `503` while your sandbox space starts. Retry.
+
+Not supported yet: pause and resume, snapshots, fork, templates, volumes, logs and metrics, and custom network rules. Sandboxes are free in the beta.
+
+See [Sandboxes](/sandboxes/overview/).
+
+### API tokens
+
+You can now make project API tokens (`pms_...`) for CI and for sandboxes. A token works for one project only. It is shown one time. You can set an expiry or none.
+
+- `pms token create`, `pms token list` and `pms token revoke` (CLI 0.7.0).
+- Set `PMS_TOKEN` to use a token with the CLI, for example in CI.
+- A token cannot manage tokens, SSH keys, members, AI keys, or create or delete projects.
+
+See [API tokens](/api/tokens/).
+
 ### Dashboard navigation on mobile
 
 We fixed bugs with the dashboard on mobile. Before, on a narrow screen, some sections were off the side of the screen and you could not easily get to them.
