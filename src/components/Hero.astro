@@ -53,7 +53,6 @@ const products = [
     text: 'Always-on workers that connect out. No disk, no inbound traffic.',
     link: '/containers/overview/',
     icon: 'M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8M12 12v8',
-    soon: true,
   },
   {
     title: 'S3 storage',
@@ -78,7 +77,7 @@ const products = [
         <path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.4"></path>
       </svg>
       <span>Search</span>
-      <kbd>/</kbd>
+      <kbd data-search-key>Ctrl K</kbd>
     </button>
     <div class="actions">
       <a href="/get-started/overview/">Quickstart</a>
@@ -96,7 +95,7 @@ const products = [
 <section class="products">
   <p class="eyebrow">Products</p>
   <h2>Choose what you build</h2>
-  <p class="section-text">Start with a VM or the AI API. Containers and storage come next.</p>
+  <p class="section-text">Start with a VM or the AI API. Storage comes next.</p>
   <div class="cards">
     {
       products.map((product) => (
@@ -121,6 +120,12 @@ const products = [
 
 <script>
   import '../scripts/code-tabs';
+
+  // Starlight opens search with Ctrl K, or Cmd K on a Mac.
+  if (/Mac|iPhone|iPad/.test(navigator.platform)) {
+    const key = document.querySelector('[data-search-key]');
+    if (key) key.textContent = '⌘K';
+  }
 
   document.querySelector('[data-open-search]')?.addEventListener('click', (event) => {
     // Stop this click here. Starlight closes the search dialog on a click outside it.
@@ -269,7 +274,7 @@ const products = [
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 999px;
     color: var(--sl-color-gray-3);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 400;
   }
 

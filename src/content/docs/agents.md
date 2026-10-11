@@ -18,7 +18,7 @@ https://docs.pmservers.org/llms.txt
 | `/<page>.md` | One page as raw Markdown. Add `.md` to the page path, for example `/vms/ssh.md`. |
 | `/openapi.json` | The OpenAPI 3.1 spec of the AI API. |
 
-Each page in the browser also has **View as Markdown** and **Copy as Markdown** buttons.
+Each page in the browser also has a **Copy page** button. Its menu has **Copy page as Markdown**, **View as Markdown**, **Open in ChatGPT**, **Open in Claude** and **Open in Slopbot**.
 
 ## Prompt examples
 
