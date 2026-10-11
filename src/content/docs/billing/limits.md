@@ -71,4 +71,6 @@ No approval needed. See [Databases](/databases/overview/).
 - Management API: `409` with code `quota_exceeded`.
 - AI API: `402 budget_exceeded` or `429 rate_limit_exceeded`.
 
+The management API also limits requests: 600 in one minute for each user, sessions and API tokens together. After that it returns `429 rate_limited` for one minute.
+
 To ask for higher limits, contact enterprise support.
