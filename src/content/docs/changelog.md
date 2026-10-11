@@ -7,6 +7,28 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### New model names
+
+The models have new IDs. The old IDs still work until 2026-11-10. After that date, the old IDs stop working. Use the new IDs. Responses show the new ID.
+
+| Old ID | New ID | Name |
+|---|---|---|
+| `qwen3.8-flash-next` | `nimbus` | Nimbus |
+| `gemma4-e4b` | `cirrus` | Cirrus |
+| `embeddinggemma2` | `stratus` | Stratus |
+| `kev` | `vane` | Vane |
+
+The page for `kev` is now at [Vane](/ai/vane/). The old link `/ai/kev/` goes to the new page.
+
+### Speech to text and text to speech models
+
+Two new audio models are in the AI API.
+
+- `squall` (speech to text): `POST /ai/v1/audio/transcriptions`. PCM WAV files only, up to 25 MB and 300 seconds.
+- `thunder` (text to speech): `POST /ai/v1/audio/speech`. The answer is a WAV file. Up to 4096 characters for each request.
+
+Audio is billed per minute (`squall`) or per character (`thunder`). See [AI API reference](/api/ai/) and [Models and prices](/ai/models/).
+
 ### API calls from CI and servers
 
 Calls to `api.pmservers.org` from GitHub Actions and other servers in data centers now work. Before, Cloudflare sent these calls a browser check, and `pms` got `403` after sign-in worked.

@@ -130,7 +130,7 @@ Container object (env values are never returned):
 | Method | Path | Use |
 |---|---|---|
 | `GET` | `/projects/{p}/ai-keys` | List keys. |
-| `POST` | `/projects/{p}/ai-keys` | Create a key. Body: `{"name": "...", "models": ["gemma4-e4b"], "budget_usd": 5}`. The answer has `secret` one time only. |
+| `POST` | `/projects/{p}/ai-keys` | Create a key. Body: `{"name": "...", "models": ["cirrus"], "budget_usd": 5}`. The answer has `secret` one time only. |
 | `GET` | `/projects/{p}/ai-keys/{k}` | Get a key. |
 | `PATCH` | `/projects/{p}/ai-keys/{k}` | Change `models` or `budget_usd`. |
 | `POST` | `/projects/{p}/ai-keys/{k}/rotate` | Make a new secret. The old secret stops at once. |

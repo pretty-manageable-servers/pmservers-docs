@@ -19,7 +19,7 @@ The AI API is OpenAI-compatible. Use curl, or any OpenAI SDK with the base URL `
 curl https://api.pmservers.org/ai/v1/chat/completions \
   -H "Authorization: Bearer $PMS_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"model": "gemma4-e4b", "messages": [{"role": "user", "content": "Hello"}]}'
+  -d '{"model": "cirrus", "messages": [{"role": "user", "content": "Hello"}]}'
 ```
 
 ```python
@@ -27,7 +27,7 @@ from openai import OpenAI
 
 client = OpenAI(base_url="https://api.pmservers.org/ai/v1", api_key="pms_sk_...")
 answer = client.chat.completions.create(
-    model="gemma4-e4b",
+    model="cirrus",
     messages=[{"role": "user", "content": "Hello"}],
 )
 print(answer.choices[0].message.content)
@@ -38,7 +38,7 @@ import OpenAI from 'openai';
 
 const client = new OpenAI({ baseURL: 'https://api.pmservers.org/ai/v1', apiKey: process.env.PMS_API_KEY });
 const answer = await client.chat.completions.create({
-  model: 'gemma4-e4b',
+  model: 'cirrus',
   messages: [{ role: 'user', content: 'Hello' }],
 });
 console.log(answer.choices[0].message.content);

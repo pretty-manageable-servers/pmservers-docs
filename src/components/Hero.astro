@@ -9,7 +9,7 @@ client = OpenAI(
 )
 
 answer = client.chat.completions.create(
-    model="gemma4-e4b",
+    model="cirrus",
     messages=[{"role": "user", "content": "Hello"}],
 )
 print(answer.choices[0].message.content)`;
@@ -22,7 +22,7 @@ const client = new OpenAI({
 });
 
 const answer = await client.chat.completions.create({
-  model: 'gemma4-e4b',
+  model: 'cirrus',
   messages: [{ role: 'user', content: 'Hello' }],
 });
 console.log(answer.choices[0].message.content);`;
@@ -31,7 +31,7 @@ const curl = `curl https://api.pmservers.org/ai/v1/chat/completions \\
   -H "Authorization: Bearer $PMS_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gemma4-e4b",
+    "model": "cirrus",
     "messages": [{"role": "user", "content": "Hello"}]
   }'`;
 

@@ -1,13 +1,13 @@
 ---
-title: Kev (decision model)
-description: Use the kev decision model with POST /ai/v1/systemone to get a choice and probabilities.
+title: Vane (decision model)
+description: Use the vane decision model with POST /ai/v1/systemone to get a choice and probabilities.
 sidebar:
   order: 4
 ---
 
-`kev` is a decision model. It does not write text. It reads one document and answers typed questions. Each answer has a probability for each option. One call takes about 200 ms.
+`vane` is a decision model. It does not write text. It reads one document and answers typed questions. Each answer has a probability for each option. One call takes about 200 ms.
 
-**Use `POST /ai/v1/systemone`.** Do not use `/chat/completions`. It does not accept `kev`.
+**Use `POST /ai/v1/systemone`.** Do not use `/chat/completions`. It does not accept `vane`.
 
 The request and response use the System One format. Existing System One clients work with base URL `https://api.pmservers.org/ai`.
 
@@ -15,7 +15,7 @@ The request and response use the System One format. Existing System One clients 
 
 | Field | Rule |
 |---|---|
-| `model` | `"kev"` |
+| `model` | `"vane"` |
 | `state` | A string. The document to read. |
 | `questions` | An object with one or more questions. Each question needs `type`, `instructions` and `criteria`. |
 
@@ -24,7 +24,7 @@ curl https://api.pmservers.org/ai/v1/systemone \
   -H "Authorization: Bearer $PMS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "kev",
+    "model": "vane",
     "state": "Customer: my order arrived broken, I want my money back.",
     "questions": {
       "team": {
@@ -44,7 +44,7 @@ curl https://api.pmservers.org/ai/v1/systemone \
 
 ```json
 {
-  "model": "kev",
+  "model": "vane",
   "answers": {
     "team": {
       "type": "choice",

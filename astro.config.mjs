@@ -5,6 +5,10 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 
 export default defineConfig({
   site: 'https://docs.pmservers.org',
+  redirects: {
+    '/ai/kev/': '/ai/vane/',
+    '/ai/kev.md': '/ai/vane.md',
+  },
   integrations: [
     starlight({
       title: 'PMS Cloud Docs',

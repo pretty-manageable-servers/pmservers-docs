@@ -7,9 +7,11 @@ sidebar:
 
 ## By token
 
-We bill all models by token, also the models that run on our own hardware. Prices are in [Models and prices](/ai/models/).
+We bill the chat, embedding and decision models by token, also the models that run on our own hardware. The token counts come from the `usage` field of each answer.
 
-The token counts come from the `usage` field of each answer.
+We bill the speech models by audio minute (`squall`) or by character (`thunder`). See [Speech to text](/api/ai/#speech-to-text) and [Text to speech](/api/ai/#text-to-speech).
+
+Prices are in [Models and prices](/ai/models/).
 
 ## Cached prompt tokens
 

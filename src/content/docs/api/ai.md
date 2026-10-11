@@ -13,12 +13,14 @@ The OpenAPI spec is at [`/openapi.json`](/openapi.json).
 |---|---|---|---|
 | `GET` | `/models` | — | OpenAI model list. Only the models of the key. |
 | `POST` | `/chat/completions` | OpenAI chat request. `model` must be an `llm` model. | OpenAI chat response, or an SSE stream with `"stream": true`. |
-| `POST` | `/embeddings` | OpenAI embeddings request. `model` must be `embeddinggemma2`. | OpenAI embeddings response. 768 dimensions. |
-| `POST` | `/systemone` | System One request. `model` must be `kev`. | System One response. See [Kev](/ai/kev/). |
+| `POST` | `/embeddings` | OpenAI embeddings request. `model` must be `stratus`. | OpenAI embeddings response. 768 dimensions. |
+| `POST` | `/systemone` | System One request. `model` must be `vane`. | System One response. See [Vane](/ai/vane/). |
+| `POST` | `/audio/transcriptions` | Multipart form: `model`, `file`, and optional `response_format` and `language`. `model` must be `squall`. | Speech to text. JSON or plain text. See [Speech to text](#speech-to-text). |
+| `POST` | `/audio/speech` | JSON request. `model` must be `thunder`. | Text to speech. A WAV file. See [Text to speech](#text-to-speech). |
 
 ## Differences from OpenAI
 
-- `model` in the answer is our model ID, for example `gemma4-e4b`.
+- `model` in the answer is our model ID, for example `cirrus`.
 - `system_fingerprint` is always `null`.
 - The answer has no cost field. See [AI billing](/billing/ai-billing/).
 - In a stream, `usage` comes in the last content chunk (the chunk with `finish_reason`), if you send `"stream_options": {"include_usage": true}`. There is no separate usage chunk.
@@ -29,5 +31,104 @@ The OpenAPI spec is at [`/openapi.json`](/openapi.json).
 curl https://api.pmservers.org/ai/v1/embeddings \
   -H "Authorization: Bearer $PMS_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"model": "embeddinggemma2", "input": ["first text", "second text"]}'
+  -d '{"model": "stratus", "input": ["first text", "second text"]}'
 ```
+
+## Speech to text
+
+`POST /ai/v1/audio/transcriptions` turns speech into text. Use the `squall` model. The request is a multipart form.
+
+| Field | Required | Value |
+|---|---|---|
+| `model` | Yes | `squall` |
+| `file` | Yes | A PCM WAV file. Up to 25 MB and up to 300 seconds of audio. |
+| `response_format` | No | `json` (default) or `text`. |
+| `language` | No | The language of the audio, for example `en`. The value is passed to the model. |
+
+- Only PCM WAV files are accepted. Send the file with the type `audio/wav`.
+- The WAV file must have a sample rate of 8000 to 192000 Hz, 1 to 8 channels, and 8, 16, 24 or 32 bits for each sample.
+- The file can be up to 25 MB. The audio can be up to 300 seconds long.
+- `json` returns `{"text": "..."}`. `text` returns the text as `text/plain`.
+- Other values of `response_format` return `400`.
+- Billed per minute of audio. The length of the audio comes from the WAV file. See [Models and prices](/ai/models/).
+
+```sh
+curl https://api.pmservers.org/ai/v1/audio/transcriptions \
+  -H "Authorization: Bearer $PMS_API_KEY" \
+  -F "model=squall" \
+  -F "file=@meeting.wav;type=audio/wav"
+```
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.pmservers.org/ai/v1",
+    api_key=os.environ["PMS_API_KEY"],
+)
+
+with open("meeting.wav", "rb") as f:
+    result = client.audio.transcriptions.create(
+        model="squall",
+        file=("meeting.wav", f, "audio/wav"),
+    )
+
+print(result.text)
+```
+
+## Text to speech
+
+`POST /ai/v1/audio/speech` turns text into speech. Use the `thunder` model. The request is JSON.
+
+| Field | Required | Value |
+|---|---|---|
+| `model` | Yes | `thunder` |
+| `input` | Yes | The text to speak. 1 to 4096 characters. |
+| `voice` | Yes | The voice to use, for example `alloy`. |
+| `response_format` | No | `wav` (default). Other values return `400`. |
+
+- The answer is a WAV file. The `Content-Type` is `audio/wav`. The audio is 24 kHz, mono, 16-bit PCM.
+- Billed per character of `input`. See [Models and prices](/ai/models/).
+- The OpenAI SDK sends `mp3` by default. Set `response_format` to `wav`.
+
+```sh
+curl https://api.pmservers.org/ai/v1/audio/speech \
+  -H "Authorization: Bearer $PMS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "thunder", "input": "Hello from PMS Cloud.", "voice": "alloy", "response_format": "wav"}' \
+  --output hello.wav
+```
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.pmservers.org/ai/v1",
+    api_key=os.environ["PMS_API_KEY"],
+)
+
+speech = client.audio.speech.create(
+    model="thunder",
+    voice="alloy",
+    input="Hello from PMS Cloud.",
+    response_format="wav",
+)
+speech.write_to_file("hello.wav")
+```
+
+## Audio errors
+
+These errors are in the OpenAI error format.
+
+| Status | `type` | `code` | Message | Cause |
+|---|---|---|---|---|
+| `400` | `invalid_request_error` | `invalid_request` | `The file must be a valid PCM WAV audio file.` | Speech to text: the file is not a valid PCM WAV file. |
+| `400` | `invalid_request_error` | `invalid_request` | `Audio is longer than 300 seconds.` | Speech to text: the audio is longer than 300 seconds. |
+| `400` | `invalid_request_error` | `invalid_request` | Names the field that is wrong. | `response_format` is not allowed. `voice` is missing. `input` is empty or longer than 4096 characters. `file` or `model` is missing. |
+| `413` | `invalid_request_error` | `request_too_large` | | Speech to text: the file is larger than 25 MB. |
+| `502` | `upstream_error` | `upstream_error` | | The model service failed. Retry later. |
+| `504` | `upstream_error` | `upstream_timeout` | | The model took too long to answer. Retry later. |
+
+Other errors are the same for all AI endpoints: `401`, `403` with `model_not_allowed`, `402` with `budget_exceeded` and `429`. See [AI errors](/ai/errors/).
