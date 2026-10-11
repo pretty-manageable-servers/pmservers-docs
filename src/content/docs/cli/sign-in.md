@@ -1,6 +1,6 @@
 ---
 title: Sign in and choose a project
-description: Sign in with pms login (GitHub in the browser), choose a default project, and get JSON output for scripts.
+description: Sign in with pms login (device login with GitHub), choose a default project, and get JSON output for scripts.
 sidebar:
   order: 2
 ---
@@ -11,11 +11,11 @@ sidebar:
 pms login
 ```
 
-The command opens your browser. Sign in with GitHub. The CLI then has its own session. It saves the session in the OS keychain. If the system has no keychain, the CLI saves it in `~/.config/pms/credentials.json` with mode `0600`.
+The command prints a short code and opens the sign-in page. Sign in with GitHub, check that the code is the same, then allow the request. The CLI then has its own session. The code expires after 10 minutes and works once. It saves the session in the OS keychain. If the system has no keychain, the CLI saves it in `~/.config/pms/credentials.json` with mode `0600`.
 
 | Option | Use |
 |---|---|
-| `--no-browser` | Print the sign-in URL and do not open the browser. |
+| `--no-browser` | Print the sign-in URL and the code, and do not open the browser. Use this over SSH or in a container, and open the URL on another device. |
 | `--email` | Sign in with email and password. The CLI asks for both in the terminal. |
 
 Check who you are:

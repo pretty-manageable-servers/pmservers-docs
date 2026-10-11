@@ -7,6 +7,23 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-10
 
+### CLI sign-in with a code
+
+`pms login` now uses device login (CLI 0.5.0). The CLI prints a short code and opens the sign-in page. Sign in with GitHub and allow the code. This also works over SSH and in containers: run `pms login --no-browser` and open the URL on another device.
+
+- `--port` is removed. The CLI no longer starts a local server for the sign-in.
+- `pms login --email` does not change.
+
+See [Sign in and choose a project](/cli/sign-in/).
+
+### AI key budget limit
+
+The budget of an AI key can no longer be more than the monthly AI budget of your account. If you create or edit a key with a higher budget, the API returns `validation_error`. Keys made before this change keep their budget.
+
+### AI gateway errors during an outage
+
+If the AI gateway cannot check your key because of an internal problem, it now returns `503`. Before, it could return `401`, which looked like a bad key. Try again later when you get `503`.
+
 ### Edit single environment variables
 
 You can now change one environment variable of a container without typing the others again.
