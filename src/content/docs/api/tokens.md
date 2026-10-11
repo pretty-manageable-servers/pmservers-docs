@@ -28,7 +28,7 @@ With the `pms` CLI:
 pms token create --project <name> --name <n> [--expires 90d|never]
 ```
 
-With the API, send a `POST` request to `/v1/projects/{id}/tokens` on `https://api.pmservers.org/v1`. The body sets the name and the expiry. The response contains the token. Only your sign-in can create a token.
+With the API, send a `POST` request to `https://api.pmservers.org/v1/projects/{id}/tokens` with the body `{"name": "ci", "expires_in_days": 90}`. Use `null` for `expires_in_days` to make a token that does not expire (1 to 365 days, or `null`). The response contains the token. Only your sign-in can create a token.
 
 ## List and revoke tokens
 
