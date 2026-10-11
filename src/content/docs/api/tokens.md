@@ -78,3 +78,4 @@ See [API overview](/api/overview/) and [Management API reference](/api/managemen
 |---|---|---|
 | `401` | `unauthorized` | No token, a token that is not valid, or an expired token. |
 | `429` | `rate_limited` | More than 10 bad tokens from one IP address in one minute. Requests from that IP address are blocked for 10 minutes. |
+| `429` | `rate_limited` | More than 600 requests from one user in one minute, sessions and tokens together. Requests are blocked for one minute. |

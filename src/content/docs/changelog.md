@@ -7,6 +7,14 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### API calls from CI and servers
+
+Calls to `api.pmservers.org` from GitHub Actions and other servers in data centers now work. Before, Cloudflare sent these calls a browser check, and `pms` got `403` after sign-in worked.
+
+### Shared rate limits
+
+The API now has a request limit for each user: 600 requests in one minute, for your sign-in session and all your API tokens together. After that, the API returns `429 rate_limited` for one minute. The limit of 10 bad tokens from one IP address in one minute now applies to the whole API. Before, each server counted alone. See [API tokens](/api/tokens/) and [Limits](/billing/limits/).
+
 ### Sandboxes and API tokens in the dashboard
 
 - A new **Sandboxes** page shows the running sandboxes of a project. You can stop a sandbox there. If you have none, the page shows how to start one.
