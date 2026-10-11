@@ -14,10 +14,10 @@ PMS Cloud is a small cloud provider. You manage everything in the console at `ht
 
 ## Projects
 
-- A project holds VMs and AI keys.
+- A project holds containers, databases and AI keys.
 - You can make more than one project.
 - You can invite other people to a project. See [Project members](/get-started/members/).
-- To delete a project, first delete its VMs and AI keys. Only the owner can delete a project.
+- To delete a project, first delete its containers, databases and AI keys. Only the owner can delete a project.
 
 ## Region
 
@@ -29,10 +29,8 @@ The limits apply to your whole account, not to each project. Usage in a project 
 
 | Resource | Limit |
 |---|---|
-| VMs | 1 |
-| vCPU, all VMs together | 2 |
-| Memory, all VMs together | 4 GiB |
-| Disk for each VM | 10 to 20 GB |
+| vCPU, all containers and databases together | 2 |
+| Memory, all containers and databases together | 4 GiB |
 | AI keys | 5 |
 | AI spend | $3 for each calendar month (UTC) |
 | Saved SSH keys | 20 |
@@ -41,5 +39,5 @@ See [Limits](/billing/limits/) for all limits.
 
 ## Next steps
 
-- [Create your first VM](/get-started/first-vm/)
+- [Create your first container](/containers/overview/)
 - [Make your first AI request](/get-started/first-ai-request/)

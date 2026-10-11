@@ -37,12 +37,6 @@ const curl = `curl https://api.pmservers.org/ai/v1/chat/completions \\
 
 const products = [
   {
-    title: 'VMs',
-    text: 'Ubuntu VMs with a browser console and SSH. Pick a size, add a key, and start.',
-    link: '/get-started/first-vm/',
-    icon: 'M4 5h16v10H4zM8 19h8M12 15v4',
-  },
-  {
     title: 'Containers',
     text: 'Always-on workers from any image. Private ports to other containers in the project.',
     link: '/containers/overview/',
@@ -78,7 +72,7 @@ const icon = (name: keyof typeof icons) =>
     <p class="eyebrow">PMS Cloud</p>
     <h1 id="_top">Build on<br />PMS Cloud</h1>
     <p class="tagline">
-      VMs, containers, databases and an OpenAI-compatible AI API. Docs for people, and for the agents that work with them.
+      Containers, databases and an OpenAI-compatible AI API. Docs for people, and for the agents that work with them.
     </p>
     <button type="button" class="search" data-open-search>
       <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
@@ -303,7 +297,7 @@ const icon = (name: keyof typeof icons) =>
       padding-block: 4rem 6rem;
     }
     .cards {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>

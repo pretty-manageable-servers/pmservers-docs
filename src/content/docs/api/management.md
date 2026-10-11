@@ -7,14 +7,14 @@ sidebar:
 
 Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token or a [project token](/api/tokens/). See [API overview](/api/overview/).
 
-`{p}` is a project ID. `{vm}`, `{c}` and `{k}` are resource IDs. Lists return `{"items": [...]}`.
+`{p}` is a project ID. `{c}` and `{k}` are resource IDs. Lists return `{"items": [...]}`.
 
 ## Account
 
 | Method | Path | Use |
 |---|---|---|
 | `GET` | `/me` | Your user ID, email and plan. |
-| `GET` | `/catalog` | Regions, VM sizes, VM images, container sizes and AI models. |
+| `GET` | `/catalog` | Regions, container sizes, database sizes and AI models. |
 | `GET` | `/account/access` | Your container access: `access` (`none`, `pending`, `approved`, `rejected`), `runtime` (`gvisor` or `native`), `vcluster` (`none`, `creating`, `ready`, `failed`, `deleting`), `reason`, `note`, `requested_at`, `decided_at`. |
 | `POST` | `/account/access/request` | Request container access. Body: `{"reason": "..."}` (1 to 1000 characters). `409` if the request is pending or approved. |
 
@@ -26,8 +26,8 @@ Base URL: `https://api.pmservers.org/v1`. Auth: the console sign-in token or a [
 | `POST` | `/projects` | Create a project. Body: `{"name": "..."}`. |
 | `GET` | `/projects/{p}` | Get a project. |
 | `PATCH` | `/projects/{p}` | Rename a project. Body: `{"name": "..."}`. |
-| `DELETE` | `/projects/{p}` | Delete a project. Owner only (`403` for a member). It must have no VMs, no containers and no AI keys. Returns `202`. |
-| `GET` | `/projects/{p}/usage` | vCPU and memory (VMs and containers), disk and AI spend of the project owner, against the owner's limits. |
+| `DELETE` | `/projects/{p}` | Delete a project. Owner only (`403` for a member). It must have no containers and no AI keys. Returns `202`. |
+| `GET` | `/projects/{p}/usage` | vCPU and memory (containers and databases), disk and AI spend of the project owner, against the owner's limits. |
 
 ## Project members
 
@@ -48,35 +48,6 @@ Saved on your account, not on a project. Public keys only. Up to 20.
 | `GET` | `/ssh-keys` | List saved public keys. |
 | `POST` | `/ssh-keys` | Save a key. Body: `{"name": "...", "public_key": "ssh-ed25519 ..."}`. |
 | `DELETE` | `/ssh-keys/{k}` | Delete a saved key. Returns `204`. |
-
-## VMs
-
-| Method | Path | Use |
-|---|---|---|
-| `GET` | `/projects/{p}/vms` | List VMs. |
-| `POST` | `/projects/{p}/vms` | Create a VM. See [Create a VM](/vms/create/). Returns `202`. |
-| `GET` | `/projects/{p}/vms/{vm}` | Get a VM. |
-| `DELETE` | `/projects/{p}/vms/{vm}` | Delete a VM. Returns `202`. |
-| `POST` | `/projects/{p}/vms/{vm}/actions` | Body: `{"action": "start" \| "stop" \| "restart"}`. Returns `202`. |
-| `POST` | `/projects/{p}/vms/{vm}/console/ticket` | Get a ticket for the console WebSocket. |
-| WebSocket | `/projects/{p}/vms/{vm}/console?ticket=...` | The serial console. See [Browser console](/vms/console/). |
-
-VM object:
-
-```json
-{
-  "id": "vm_...",
-  "name": "web-1",
-  "status": "running",
-  "status_message": null,
-  "size": "pms-2c-4g",
-  "image": "ubuntu-24.04",
-  "disk_gb": 20,
-  "private_ip": "10.0.12.34",
-  "ssh_user": "ubuntu",
-  "created_at": "2026-10-08T12:00:00+00:00"
-}
-```
 
 ## Registry credentials
 

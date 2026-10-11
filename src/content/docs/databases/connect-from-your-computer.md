@@ -11,7 +11,7 @@ Use the [PMS CLI](/cli/install/) to connect to a database from your computer, fo
 
 - The `pms` CLI, signed in. See [Install the CLI](/cli/install/) and [Sign in](/cli/sign-in/).
 - A running database.
-- An SSH key: a key saved on your account (`pms ssh-key add`), or a key that you gave to a VM.
+- An SSH key saved on your account. Add it with `pms ssh-key add`.
 - The database password. We show it one time when you create the database. If you lost it, run `pms db reset-password <database>`. A reset ends all open connections.
 
 All members of the project can connect.
@@ -42,7 +42,7 @@ Press Ctrl-C to stop. The CLI closes the tunnel and the local port.
 | Option | Meaning |
 |---|---|
 | `--port <N>` | The local port. Default: `5432`. Use it when that port is in use. |
-| `-i`, `--identity <file>` | The private key file. Use it when `ssh` does not find your key. The key must be one that you saved or gave to a VM. |
+| `-i`, `--identity <file>` | The private key file. Use it when `ssh` does not find your key. The key must be one that you saved on your account. |
 | `--project <project>` | The project of the database. Default: your default project. |
 
 ## How it works
@@ -59,6 +59,6 @@ Press Ctrl-C to stop. The CLI closes the tunnel and the local port.
 
 ## Problems
 
-- **Permission denied (publickey)**: the key is not saved on your account and not a VM key. Add it with `pms ssh-key add`, or give it with `-i`.
+- **Permission denied (publickey)**: the key is not saved on your account. Add it with `pms ssh-key add`. Then give it with `-i` if `ssh` does not find it.
 - **Local port 5432 is not free**: another program uses the port. Give another port with `--port`.
 - **password authentication failed**: the password is wrong or was reset. Run `pms db reset-password <database>`.

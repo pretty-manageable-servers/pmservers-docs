@@ -5,13 +5,13 @@ The public docs at https://docs.pmservers.org. Built with [Astro Starlight](http
 ## Edit the docs
 
 All pages are Markdown files in `src/content/docs/`. The folder is the URL:
-`src/content/docs/vms/ssh.md` is `/vms/ssh/`.
+`src/content/docs/containers/overview.md` is `/containers/overview/`.
 
 Each page needs front matter:
 
 ```yaml
 ---
-title: Connect with SSH
+title: Connect from your computer
 description: One sentence. Agents read it in llms.txt.
 sidebar:
   order: 2

@@ -53,7 +53,6 @@ A database has no public address. Nothing is open to the internet.
 - Hosted apps cannot use `pms db connect`. It works only where the CLI runs.
 
 - Containers need approval for each account. See [Containers](/containers/overview/).
-- Access from VMs is not available.
 
 ## The `app` user
 
@@ -101,7 +100,7 @@ A project with a database cannot be deleted. Delete the databases first.
 | Databases for each account | 1 |
 | Storage, all databases together | 1 GiB |
 | Size | 0.25 vCPU / 512 MiB |
-| Quota | Databases use the same vCPU and memory quota as VMs and containers (2 vCPU, 4 GiB on the free tier). |
+| Quota | Databases use the same vCPU and memory quota as containers (2 vCPU, 4 GiB on the free tier). |
 | Backups | None |
 | Replicas | None. One server. |
 

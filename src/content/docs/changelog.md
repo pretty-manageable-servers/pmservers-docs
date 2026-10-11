@@ -7,6 +7,16 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### VM service removed
+
+The VM service is removed. Use containers, databases or sandboxes instead:
+
+- [Containers](/containers/overview/)
+- [Databases](/databases/overview/)
+- [Sandboxes](/sandboxes/overview/)
+
+The `pms vm` commands are removed from the CLI.
+
 ### New model names
 
 The models have new IDs. The old IDs still work until 2026-11-10. After that date, the old IDs stop working. Use the new IDs. Responses show the new ID.

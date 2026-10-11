@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-`pms` is the PMS Cloud command-line tool. It does what the console does: projects, VMs, containers, databases and AI keys.
+`pms` is the PMS Cloud command-line tool. It does what the console does: projects, containers, databases and AI keys.
 
 The CLI is open source under the MIT license. The code is at [github.com/pretty-manageable-servers/pmservers-cli](https://github.com/pretty-manageable-servers/pmservers-cli).
 

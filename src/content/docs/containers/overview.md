@@ -79,7 +79,7 @@ There is no disk. **A restart or a redeploy deletes all files in the container.*
 |---|---|
 | Containers for each account | 2 |
 | Sizes | 0.25 vCPU / 512 MiB, or 0.5 vCPU / 1 GiB |
-| Quota | Containers use the same vCPU and memory quota as VMs (2 vCPU, 4 GiB on the free tier). |
+| Quota | Containers use the same vCPU and memory quota as databases (2 vCPU, 4 GiB on the free tier). |
 
 See [Limits](/billing/limits/).
 
@@ -101,4 +101,4 @@ A container can connect to:
 
 An attached tunnel connector can reach **any service in its project**. Use a separate project to limit this.
 
-A container cannot connect to a container or database in another project, also if both are in your account. VMs cannot connect to containers.
+A container cannot connect to a container or database in another project, also if both are in your account.

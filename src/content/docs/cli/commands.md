@@ -1,6 +1,6 @@
 ---
 title: Command overview
-description: The pms commands for projects, members, VMs, SSH keys, containers, registry credentials, databases, AI keys, catalog, events and access.
+description: The pms commands for projects, members, SSH keys, containers, registry credentials, databases, AI keys, catalog, events and access.
 sidebar:
   order: 3
 ---
@@ -32,33 +32,16 @@ pms member remove <email|user-id>
 
 See [Project members](/get-started/members/).
 
-## VMs
-
-```sh
-pms vm list
-pms vm show <vm>
-pms vm create <name> --size <size> --image <image> [--disk-gb N] (--ssh-key <key> | --public-key-file <file> | --generate-key [--key-out <file>]) [--wait]
-pms vm start|stop|restart|delete <vm> [--wait]
-pms vm metrics <vm>
-pms vm console <vm>
-pms vm ssh <vm> [-i <key>] [-u <user>] [-- <ssh args>]
-pms ssh-config [--jump-host <host>]
-```
-
-- `vm create` needs one SSH key option. `--generate-key` makes a new ed25519 key on your computer and sends only the public key. The private key goes to `~/.ssh/pms_<name>_ed25519`, or to `--key-out`.
-- `vm console` opens the serial console. Press Ctrl-] to leave.
-- `vm ssh` connects through the jump host. See [Connect with SSH](/vms/ssh/).
-- `ssh-config` prints an SSH config for the jump host and your VMs.
-
 ## SSH keys
 
 ```sh
 pms ssh-key list
 pms ssh-key add <name> [--file <file> | --key <key>]
 pms ssh-key delete <id>
+pms ssh-config [--jump-host <host>]
 ```
 
-`ssh-key add` reads the key from standard input if you give no key or file.
+`ssh-key add` reads the key from standard input if you give no key or file. `ssh-config` prints an SSH config for the jump host.
 
 ## Containers
 

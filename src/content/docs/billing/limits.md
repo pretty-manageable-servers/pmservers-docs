@@ -9,15 +9,17 @@ All limits are for the free tier. They apply to your whole account, not to each 
 
 Usage in a shared project counts against the project owner. See [Project members](/get-started/members/).
 
-## VMs
+## Compute
 
 | Limit | Value |
 |---|---|
-| VMs | 1 |
-| vCPU, all VMs together | 2 |
-| Memory, all VMs together | 4 GiB |
-| Disk for each VM | 10 to 20 GB |
-| Console connections for each VM | 1 at a time |
+| vCPU, all containers and databases together | 2 |
+| Memory, all containers and databases together | 4 GiB |
+
+## SSH
+
+| Limit | Value |
+|---|---|
 | Saved SSH public keys | 20 |
 
 ## Projects
@@ -44,7 +46,7 @@ Each account needs approval. See [Containers](/containers/overview/).
 | Containers | 2 |
 | Sizes | 0.25 vCPU / 512 MiB, or 0.5 vCPU / 1 GiB |
 | Registry credentials | 10 |
-| vCPU and memory | Shared with VMs (see above) |
+| vCPU and memory | Counts against [Compute](#compute) |
 | Disk | None. Containers are stateless. |
 | Inbound traffic | None. Workers only. |
 
@@ -57,7 +59,7 @@ No approval needed. See [Databases](/databases/overview/).
 | Databases | 1 |
 | Size | 0.25 vCPU / 512 MiB |
 | Storage, all databases together | 1 GiB. Read-only at 100%, connections blocked at 150%. See [Storage limit](/databases/storage-limit/). |
-| vCPU and memory | Shared with VMs and containers (see above) |
+| vCPU and memory | Counts against [Compute](#compute) |
 | Backups | None |
 
 ## S3 storage (coming soon)
