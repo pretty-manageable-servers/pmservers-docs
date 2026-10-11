@@ -3,7 +3,12 @@ title: Managed Cloudflare Tunnels
 description: Expose a container through a Cloudflare Tunnel you control.
 sidebar:
   order: 4
+  badge: Beta
 ---
+
+:::caution[Beta]
+This feature is in beta. Tell us if something does not work.
+:::
 
 PMS can run one `cloudflared` connector beside a container. Use this to publish an HTTP or WebSocket service without giving PMS access to your Cloudflare account.
 
