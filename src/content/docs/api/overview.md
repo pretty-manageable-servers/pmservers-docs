@@ -10,15 +10,15 @@ PMS Cloud has two APIs.
 | API | Base URL | Auth | Use |
 |---|---|---|---|
 | [AI API](/api/ai/) | `https://api.pmservers.org/ai/v1` | AI key (`pms_sk_...`) | Call AI models. OpenAI-compatible. |
-| [Management API](/api/management/) | `https://api.pmservers.org/v1` | Console sign-in token | Manage projects, VMs, SSH keys and AI keys. |
+| [Management API](/api/management/) | `https://api.pmservers.org/v1` | Console sign-in token, or a [project token](/api/tokens/) | Manage projects, VMs, SSH keys and AI keys. |
 
 ## Management API auth
 
 The console uses the management API. It sends the sign-in token of your session as `Authorization: Bearer <token>`.
 
-:::caution
-There are no long-lived API tokens for the management API yet. For now, use the console to manage resources. Use the AI API with an AI key from your code.
-:::
+Scripts and CI use a project token. A project token works on one project only. See [API tokens](/api/tokens/).
+
+Use the AI API with an AI key from your code.
 
 ## Management API errors
 

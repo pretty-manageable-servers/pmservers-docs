@@ -64,6 +64,7 @@ export default defineConfig({
               { label: 'VMs', items: [{ autogenerate: { directory: 'vms' } }] },
               { label: 'Containers', items: [{ autogenerate: { directory: 'containers' } }] },
               { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },
+              { label: 'Sandboxes', items: [{ autogenerate: { directory: 'sandboxes' } }] },
               { label: 'Storage', items: [{ autogenerate: { directory: 'storage' } }] },
               { label: 'Billing and limits', items: [{ autogenerate: { directory: 'billing' } }] },
               { label: 'For agents', items: ['agents'] },

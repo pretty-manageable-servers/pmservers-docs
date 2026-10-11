@@ -10,6 +10,7 @@ const SECTION_ORDER = [
   'vms',
   'containers',
   'databases',
+  'sandboxes',
   'storage',
   'billing',
   'agents',
