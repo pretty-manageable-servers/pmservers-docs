@@ -11,7 +11,7 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 You can now publish a container through a Cloudflare Tunnel in your own Cloudflare account. Create a remotely managed tunnel in Cloudflare, set its origin to the URL that PMS shows, and give PMS only the connector token. PMS runs the `cloudflared` connector beside your container and shows if it is connected.
 
-- Set it in the dashboard, or with `pms container create` or `pms container edit` and `--tunnel-port` with `--tunnel-token-file` or `--tunnel-token-stdin`.
+- Set it in the dashboard, or with `pms container create` or `pms container edit` and `--tunnel-port` with `--tunnel-token-file` or `--tunnel-token-stdin` (CLI 0.6.0).
 - Each connector uses 0.05 vCPU and 128 MiB of your compute limit while it is attached.
 - The tunnel can reach any service in the same project. Use a separate project to limit this.
 

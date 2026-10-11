@@ -72,7 +72,7 @@ pms container start|stop|restart|delete <container> [--wait]
 pms container logs <container> [--tail N] [--previous] [--follow]
 ```
 
-App edits redeploy the container; managed tunnel edits replace only its connector. Tunnel tokens must come from standard input or a private file (mode 0600 or stricter), never a command-line value. `--set-env` and `--unset-env` change only the named variables (CLI 0.4.0). `-e`, `--env-file` and `--clear-env` replace **all** variables. You cannot use both kinds in one edit. See [Containers](/containers/overview/), [Private ports](/containers/private-ports/) and [Managed Cloudflare Tunnels](/containers/managed-tunnels/).
+App edits redeploy the container; managed tunnel edits replace only its connector (CLI 0.6.0). Tunnel tokens must come from standard input or a private file (mode 0600 or stricter), never a command-line value. `--set-env` and `--unset-env` change only the named variables (CLI 0.4.0). `-e`, `--env-file` and `--clear-env` replace **all** variables. You cannot use both kinds in one edit. See [Containers](/containers/overview/), [Private ports](/containers/private-ports/) and [Managed Cloudflare Tunnels](/containers/managed-tunnels/).
 
 ## Registry credentials
 
