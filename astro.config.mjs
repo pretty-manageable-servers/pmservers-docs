@@ -60,6 +60,7 @@ export default defineConfig({
             link: '/get-started/overview/',
             items: [
               { label: 'Get started', items: [{ autogenerate: { directory: 'get-started' } }] },
+              { label: 'CLI', items: [{ autogenerate: { directory: 'cli' } }] },
               { label: 'VMs', items: [{ autogenerate: { directory: 'vms' } }] },
               { label: 'Containers', items: [{ autogenerate: { directory: 'containers' } }] },
               { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },

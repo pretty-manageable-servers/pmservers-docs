@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type DocsPage = CollectionEntry<'docs'>;
 
 // The order of the sidebar. Pages in other folders come last.
-const SECTION_ORDER = ['', 'get-started', 'vms', 'containers', 'ai', 'storage', 'billing', 'api', 'agents'];
+const SECTION_ORDER = ['', 'get-started', 'cli', 'vms', 'containers', 'ai', 'storage', 'billing', 'api', 'agents'];
 
 function section(page: DocsPage): string {
   return page.id === 'index' ? '' : page.id.split('/')[0];

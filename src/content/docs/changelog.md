@@ -17,6 +17,21 @@ You can now change one environment variable of a container without typing the ot
 
 See [Containers](/containers/overview/).
 
+### PMS CLI
+
+The `pms` command-line tool is out. It is open source (MIT).
+
+- Install from the GitHub releases page: macOS (arm64, x86_64) and Linux (x86_64, arm64).
+- `pms login` signs in with GitHub in the browser. The session is in the OS keychain.
+- It covers projects, members, VMs, SSH keys, containers, registry credentials, databases, AI keys, the catalog, events and access.
+- `pms vm ssh` connects to a VM through the jump host.
+
+See [Install the CLI](/cli/install/) and the [command overview](/cli/commands/).
+
+### Connect to a database from your computer
+
+`pms db connect` opens a local port to a database through the SSH jump host. Use it with `psql` or any Postgres client. The database stays private. All project members can connect. See [Connect from your computer](/databases/connect-from-your-computer/).
+
 ### Container private ports
 
 A container can now open up to 5 private TCP ports.
