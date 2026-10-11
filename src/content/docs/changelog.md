@@ -7,6 +7,11 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-11
 
+### Sandboxes and API tokens in the dashboard
+
+- A new **Sandboxes** page shows the running sandboxes of a project. You can stop a sandbox there. If you have none, the page shows how to start one.
+- A new **API tokens** tab in project settings. Create a token (it is shown one time), see your tokens, and revoke them.
+
 ### Sandboxes (beta)
 
 You can now run code in sandboxes on PMS Cloud. The sandbox API is compatible with E2B, so you use the official `e2b` SDK for Python or JavaScript. Change only three environment variables:
