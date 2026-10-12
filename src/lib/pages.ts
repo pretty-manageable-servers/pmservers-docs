@@ -9,6 +9,7 @@ const SECTION_ORDER = [
   'cli',
   'containers',
   'databases',
+  'networking',
   'sandboxes',
   'storage',
   'billing',
@@ -45,7 +46,7 @@ export function markdownPath(id: string): string {
 
 /**
  * Makes root-relative links absolute. A link to a page points at its Markdown file.
- * Example: `](/databases/connect-from-your-computer/#options)` becomes `](https://docs.pmservers.org/databases/connect-from-your-computer.md#options)`.
+ * Example: `](/networking/overview/#rules)` becomes `](https://docs.pmservers.org/networking/overview.md#rules)`.
  */
 export function absoluteLinks(markdown: string, site: URL | undefined): string {
   const base = (site ?? new URL('https://docs.pmservers.org')).origin;

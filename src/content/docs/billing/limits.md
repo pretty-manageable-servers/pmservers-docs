@@ -16,12 +16,6 @@ Usage in a shared project counts against the project owner. See [Project members
 | vCPU, all containers and databases together | 2 |
 | Memory, all containers and databases together | 4 GiB |
 
-## SSH
-
-| Limit | Value |
-|---|---|
-| Saved SSH public keys | 20 |
-
 ## Projects
 
 | Limit | Value |

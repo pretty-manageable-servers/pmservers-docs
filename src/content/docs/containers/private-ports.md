@@ -1,11 +1,11 @@
 ---
 title: Private ports
-description: Open up to 5 TCP ports on a container. Other containers in the same project connect to NAME:PORT. Ports can also be origins for a managed Cloudflare Tunnel.
+description: Open up to 5 TCP ports on a container. Other containers in the same project connect to NAME:PORT. Ports can also be targets of a network connector.
 sidebar:
   order: 3
 ---
 
-A container can open **private ports**. Use them when one container must call another one, for example a bot that calls a search worker. The same declared port can be selected as an origin for a [managed Cloudflare Tunnel](/containers/managed-tunnels/).
+A container can open **private ports**. Use them when one container must call another one, for example a bot that calls a search worker. You can also select the port as a target of a [network connector](/networking/overview/).
 
 ## Open a port
 
@@ -53,9 +53,9 @@ A private port is reachable only from other containers in the **same project**.
 | From | Can connect? |
 |---|---|
 | A container in the same project | Yes |
-| A managed tunnel connector attached to a container in the project | Yes, to any service in that project |
+| A network connector of the project, for a port that you selected | Yes, only the selected ports |
 | A container in another project, also in your account | No |
-| Your computer or the internet | No |
+| Your computer or the internet | No, except through a network connector |
 
 A container name that has ports must be different from the name of a database in the same project.
 

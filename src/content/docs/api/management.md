@@ -39,16 +39,6 @@ See [Project members](/get-started/members/).
 | `POST` | `/projects/{p}/members` | Add a member. Owner only. Body: `{"email": "..."}`. Returns `201` with `invited: true` if the person had no account and got an invite email. `409` if they are already a member. |
 | `DELETE` | `/projects/{p}/members/{user_id}` | The owner removes a member, or a member removes themselves to leave. The owner cannot leave. Returns `204`. |
 
-## SSH keys
-
-Saved on your account, not on a project. Public keys only. Up to 20.
-
-| Method | Path | Use |
-|---|---|---|
-| `GET` | `/ssh-keys` | List saved public keys. |
-| `POST` | `/ssh-keys` | Save a key. Body: `{"name": "...", "public_key": "ssh-ed25519 ..."}`. |
-| `DELETE` | `/ssh-keys/{k}` | Delete a saved key. Returns `204`. |
-
 ## Registry credentials
 
 Saved on your account, not on a project. Up to 10. See [Registry credentials](/containers/registry-credentials/).
@@ -95,6 +85,39 @@ Container object (env values are never returned):
 ```
 
 `status`: `provisioning`, `running`, `stopped`, `failed`, `deleting` or `unknown`.
+
+## Network connectors
+
+Project members can use these routes. A connector never returns its token. See [Networking](/networking/overview/).
+
+| Method | Path | Use |
+|---|---|---|
+| `GET` | `/projects/{p}/connectors` | List the connectors. Returns `{"connectors": [...]}`. |
+| `GET` | `/projects/{p}/connectors/available-targets` | List the containers (with their ports) and the databases (port `5432`) that a connector can reach. Returns `{"targets": [...]}`. |
+| `PUT` | `/projects/{p}/connectors/{kind}` | Turn on a connector, or change its token or targets. `{kind}` is `tailscale` or `cloudflared`. Body: `{"token": "...", "targets": [{"kind": "container", "id": "ctr_...", "port": 3000, "external_port": 3000}]}`. `token` is required to turn on a connector. A missing `targets` keeps the current targets. `external_port` is for `tailscale` only. Returns the connector. |
+| `DELETE` | `/projects/{p}/connectors/{kind}` | Turn off a connector. The pod and its token are removed. Returns `204`. |
+
+A `tailscale` token starts with `tskey-`. Two targets of a `tailscale` connector cannot use the same `external_port` (`422 validation_error`). A `cloudflared` target has no `external_port`. A port that a target uses must be in the Ports of the container, or be `5432` for a database.
+
+Connector object:
+
+```json
+{
+  "id": "ncn_...",
+  "kind": "tailscale",
+  "status": "connected",
+  "message": null,
+  "observed_at": "2026-10-12T12:00:00+00:00",
+  "targets": [
+    {"kind": "database", "id": "db_...", "name": "app-db", "port": 5432, "external_port": 5432,
+     "address": "myproject.example.ts.net:5432"}
+  ],
+  "created_at": "2026-10-12T12:00:00+00:00",
+  "updated_at": "2026-10-12T12:00:00+00:00"
+}
+```
+
+`status`: `provisioning`, `connected`, `disconnected`, `stopped` or `deleting`. `address` is `null` until the tailnet name of a `tailscale` connector is known. For `cloudflared`, `address` is the origin to set in Cloudflare.
 
 ## AI keys
 

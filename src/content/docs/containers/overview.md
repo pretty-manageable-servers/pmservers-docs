@@ -1,6 +1,6 @@
 ---
 title: Containers
-description: Worker containers with project-private ports and optional managed Cloudflare Tunnel access. No disk. linux/amd64 images, run as a non-root user, on gVisor. Each account needs approval.
+description: Worker containers with project-private ports and optional network connectors. No disk. linux/amd64 images, run as a non-root user, on gVisor. Each account needs approval.
 sidebar:
   order: 1
 ---
@@ -21,10 +21,10 @@ In a shared project, the **project owner's** account must have access. A member 
 
 A container is a **worker**. It runs all the time.
 
-- No public address by default. An optional [managed Cloudflare Tunnel](/containers/managed-tunnels/) can expose an HTTP or WebSocket service through a hostname you configure in your Cloudflare account.
+- No public address by default. A [Cloudflare Tunnel connector](/networking/cloudflare/) can expose an HTTP or WebSocket service through a hostname you configure in your Cloudflare account.
 - Optional private ports: other containers in the **same project** can connect. See [Private ports](/containers/private-ports/).
 - Good for: a Discord bot, a queue worker, a scheduled job runner, a helper service for another container.
-- A public website or HTTP API needs a [managed Cloudflare Tunnel](/containers/managed-tunnels/); the container has no public address by default.
+- A public website or HTTP API needs a [Cloudflare Tunnel connector](/networking/cloudflare/). The container has no public address by default.
 
 ## Create a container
 
@@ -36,8 +36,7 @@ In the console, open **Containers**, then select **Create container**. Give:
 | Image | For example `ghcr.io/owner/app:1.0`. With no host, the image is from Docker Hub (`docker.io`). |
 | Size | 0.25 vCPU / 512 MiB, or 0.5 vCPU / 1 GiB. |
 | Registry credential | Optional. Only for a private image. See [Registry credentials](/containers/registry-credentials/). |
-| Ports | Optional. 5 at most, from 1 to 65535. Used for project networking and as an origin for a managed tunnel. See [Private ports](/containers/private-ports/). |
-| Managed Cloudflare Tunnel | Optional. Provide a remotely managed tunnel token and one declared port. See [Managed tunnels](/containers/managed-tunnels/). |
+| Ports | Optional. 5 at most, from 1 to 65535. Used for project networking and as targets of a network connector. See [Private ports](/containers/private-ports/). |
 | Environment variables | Optional. 50 at most, 32 KiB in total. Names: letters, digits and `_`, not a digit first. |
 
 After you save a variable, nobody can read its value again, also not in the console. The console shows only the names.
@@ -61,7 +60,7 @@ After you save a variable, nobody can read its value again, also not in the cons
 ## Change a container
 
 - **Stop**, **Start** and **Restart** are in the container's side panel.
-- **Edit** changes the image, size, registry credential, ports, environment variables or tunnel attachment. App changes restart the container; tunnel changes restart only the connector.
+- **Edit** changes the image, size, registry credential, ports or environment variables. A change restarts the container. To let a connector reach a port, see [Networking](/networking/overview/).
 - To change environment variables, you change only the variables that you want. In the edit form, each variable has a row. Type a value to change it. Leave the value empty to keep it. Select **Remove** to delete a variable. Select **Add variable** to add a new one. The other variables keep their values.
 - With the `pms` CLI, use `pms container edit <name> --set-env KEY=VALUE --unset-env KEY`. Repeat a flag for more variables. `--env` and `--env-file` replace **all** variables.
 
@@ -99,6 +98,6 @@ A container can connect to:
 - The public internet.
 - Containers and databases in the **same project**. See [Private ports](/containers/private-ports/).
 
-An attached tunnel connector can reach **any service in its project**. Use a separate project to limit this.
+A network connector reaches only the targets that you select. See [Networking](/networking/overview/).
 
 A container cannot connect to a container or database in another project, also if both are in your account.

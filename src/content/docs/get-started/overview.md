@@ -33,7 +33,6 @@ The limits apply to your whole account, not to each project. Usage in a project 
 | Memory, all containers and databases together | 4 GiB |
 | AI keys | 5 |
 | AI spend | $3 for each calendar month (UTC) |
-| Saved SSH keys | 20 |
 
 See [Limits](/billing/limits/) for all limits.
 

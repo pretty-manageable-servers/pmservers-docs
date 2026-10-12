@@ -67,6 +67,7 @@ export default defineConfig({
               { label: 'CLI', items: [{ autogenerate: { directory: 'cli' } }] },
               { label: 'Containers', items: [{ autogenerate: { directory: 'containers' } }] },
               { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },
+              { label: 'Networking', items: [{ autogenerate: { directory: 'networking' } }] },
               { label: 'Sandboxes', items: [{ autogenerate: { directory: 'sandboxes' } }] },
               {
                 label: 'Storage',

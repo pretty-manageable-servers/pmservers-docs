@@ -15,7 +15,7 @@ You can invite other people to a project. They get access at once.
 | Create, start, stop and delete containers | Yes | Yes |
 | Create, rotate and revoke AI keys | Yes | Yes |
 | Rename the project | Yes | Yes |
-| Connect to the databases of the project with `pms db connect` | Yes | Yes |
+| Turn network connectors on and off, and choose their targets | Yes | Yes |
 | Invite and remove members | Yes | No |
 | Leave the project | No | Yes |
 | Delete the project | Yes | No |
@@ -44,10 +44,6 @@ A project can have up to 20 members.
 - A member clicks **Leave** next to their own email.
 
 The containers, databases and AI keys stay in the project. AI keys keep working. To stop a key, revoke or rotate it.
-
-## SSH
-
-The jump host accepts only SSH keys saved on your account. Add a key with `pms ssh-key add`. Your saved keys can reach the databases of all projects where you are the owner or a member. See [Connect from your computer](/databases/connect-from-your-computer/).
 
 ## API
 
