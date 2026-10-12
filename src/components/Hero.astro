@@ -54,6 +54,12 @@ const products = [
     link: '/get-started/first-ai-request/',
     icon: 'M8 9l-3 3 3 3M16 9l3 3-3 3M13.5 7l-3 10',
   },
+  {
+    title: 'Object storage',
+    text: 'S3-compatible buckets, beta. Share files with presigned URLs.',
+    link: '/storage/overview/',
+    icon: 'M4 7h16v4H4zM5 11v8h14v-8M10 15h4',
+  },
 ];
 
 // Small line icons for the buttons, 16 by 16.
@@ -98,7 +104,7 @@ const icon = (name: keyof typeof icons) =>
 <section class="products">
   <p class="eyebrow">Products</p>
   <h2>Choose what you build</h2>
-  <p class="section-text">Pick a product. Each one has a quickstart. S3 storage comes next.</p>
+  <p class="section-text">Pick a product. Each one has a quickstart.</p>
   <div class="cards">
     {
       products.map((product) => (
