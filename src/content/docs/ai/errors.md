@@ -1,15 +1,28 @@
 ---
 title: AI errors
-description: Error codes of the AI API, in OpenAI error format, and what to do for each.
+description: Error codes of the AI API, OpenAI and Anthropic formats, and retry rules.
 sidebar:
   order: 5
 ---
 
-The AI API returns errors in OpenAI format. OpenAI SDKs read them as normal errors.
+Chat Completions and Responses return HTTP errors in OpenAI format. OpenAI SDKs
+read them as normal errors.
 
 ```json
 {"error": {"message": "The budget for this key or account is spent.", "type": "insufficient_quota", "code": "budget_exceeded"}}
 ```
+
+Messages returns native Anthropic errors:
+
+```json
+{"type": "error", "error": {"type": "authentication_error", "message": "Invalid API key."}}
+```
+
+HTTP statuses and retry rules are shared. The Anthropic `error.type` is
+`authentication_error` for `401`, `permission_error` for `403`,
+`request_too_large` for `413`, `rate_limit_error` for `429`, `api_error` for
+server failures, and `invalid_request_error` for invalid input or a spent budget.
+Upstream error messages are sanitized in HTTP responses and streaming events.
 
 ## Codes
 
