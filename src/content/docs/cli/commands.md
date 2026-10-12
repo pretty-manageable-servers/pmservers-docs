@@ -38,24 +38,23 @@ See [Project members](/get-started/members/).
 pms ssh-key list
 pms ssh-key add <name> [--file <file> | --key <key>]
 pms ssh-key delete <id>
-pms ssh-config [--jump-host <host>]
 ```
 
-`ssh-key add` reads the key from standard input if you give no key or file. `ssh-config` prints an SSH config for the jump host.
+`ssh-key add` reads the key from standard input if you give no key or file.
 
 ## Containers
 
 ```sh
 pms container list
 pms container show <container>
-pms container create <name> --image <image> --size <size> [--registry-credential <cred>] [--runtime gvisor|native] [--port <port> ...] [--tunnel-port <port> (--tunnel-token-file <file> | --tunnel-token-stdin)] [-e KEY=VALUE ...] [--env-file <file>]
-pms container edit <container> [--image ...] [--size ...] [--port <port> ... | --clear-ports] [--tunnel-port <port>] [--tunnel-token-file <file> | --tunnel-token-stdin | --detach-tunnel] [--set-env KEY=VALUE ...] [--set-env-file <file>] [--unset-env KEY ...]
+pms container create <name> --image <image> --size <size> [--registry-credential <cred>] [--runtime gvisor|native] [--port <port> ...] [-e KEY=VALUE ...] [--env-file <file>]
+pms container edit <container> [--image ...] [--size ...] [--port <port> ... | --clear-ports] [--set-env KEY=VALUE ...] [--set-env-file <file>] [--unset-env KEY ...]
 pms container edit <container> [-e KEY=VALUE ... | --env-file <file> | --clear-env]
 pms container start|stop|restart|delete <container> [--wait]
 pms container logs <container> [--tail N] [--previous] [--follow]
 ```
 
-App edits redeploy the container; managed tunnel edits replace only its connector (CLI 0.6.0). Tunnel tokens must come from standard input or a private file (mode 0600 or stricter), never a command-line value. `--set-env` and `--unset-env` change only the named variables (CLI 0.4.0). `-e`, `--env-file` and `--clear-env` replace **all** variables. You cannot use both kinds in one edit. See [Containers](/containers/overview/), [Private ports](/containers/private-ports/) and [Managed Cloudflare Tunnels](/containers/managed-tunnels/).
+App edits redeploy the container. `--set-env` and `--unset-env` change only the named variables (CLI 0.4.0). `-e`, `--env-file` and `--clear-env` replace **all** variables. You cannot use both kinds in one edit. See [Containers](/containers/overview/) and [Private ports](/containers/private-ports/).
 
 ## Registry credentials
 
@@ -76,10 +75,25 @@ pms db create <name> [--size <size>] [--vector] [--wait]
 pms db delete <database> [--wait]
 pms db vector on|off <database>
 pms db reset-password <database>
-pms db connect <database> [--port N] [-i <key>]
 ```
 
-The password of a new database prints one time. `db connect` opens a local port to the database. See [Connect from your computer](/databases/connect-from-your-computer/).
+The password of a new database prints one time. To connect from your computer, see [Networking](/networking/overview/).
+
+## Networking
+
+```sh
+pms network show [--project P]
+pms network tailscale enable [--auth-key-file PATH]
+pms network tailscale disable
+pms network cloudflared enable [--token-file PATH]
+pms network cloudflared disable
+pms network expose <name> [--port N] [--via tailscale|cloudflared|both] [--external-port N]
+pms network unexpose <name> [--port N] [--via tailscale|cloudflared|both]
+```
+
+`show` lists both connectors, their status and each target with its address. `expose` and `unexpose` change the targets of the connectors. `<name>` is a container or a database. The default for `--via` is `both`. It applies only to the connectors that exist. For `expose`, the default for `--port` is the only port of the container. If it has more than one port, give `--port`. For `unexpose`, no `--port` removes every port of that container or database. `--external-port` works only for Tailscale.
+
+The token or key is read from a file, or from standard input when you give no file. Never give a token as a command-line value. See [Tailscale](/networking/tailscale/) and [Cloudflare Tunnel](/networking/cloudflare/).
 
 ## AI keys
 

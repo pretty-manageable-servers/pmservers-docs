@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Only containers of the same project can connect to a database. See [Private access only](/databases/overview/#private-access-only). To connect from your computer, see [Connect from your computer](/databases/connect-from-your-computer/).
+Only containers of the same project can connect to a database. See [Private access only](/databases/overview/#private-access-only). To connect from your computer, see [Networking](/networking/overview/).
 
 ## 1. Add the URL to the container
 

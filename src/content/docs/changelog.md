@@ -7,6 +7,21 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-12
 
+### Networking
+
+There is a new **Networking** page in the console. A project can have a Tailscale connector and a Cloudflare Tunnel connector. You choose the containers, databases and ports that each connector can reach. Nothing becomes public on PMS Cloud. See [Networking](/networking/overview/).
+
+- [Tailscale](/networking/tailscale/) is in beta.
+- [Cloudflare Tunnel](/networking/cloudflare/) moves here from the containers.
+- Use `pms network` in the CLI, or the project connector endpoints in the [management API](/api/management/#network-connectors).
+
+### Breaking changes for networking
+
+- The container tunnel fields are removed from the API and the CLI. A request that still sends `tunnel_port`, `tunnel_token` or `detach_tunnel` fails. Use a project connector instead. If a project had more than one tunnel token, only the oldest token is kept. It moves to the project Cloudflare Tunnel connector.
+- `pms db connect` is removed. To connect from your computer, use a [Tailscale](/networking/tailscale/) or [Cloudflare Tunnel](/networking/cloudflare/) connector.
+- The SSH jump host `jump.pmservers.org` is shut down. It no longer accepts connections.
+- Tailscale is in beta. Check it on a test project before you use it for important work.
+
 ### Object storage (beta)
 
 Object storage is in beta. It stores files in buckets and has an S3 API. Only approved accounts can turn it on. Use it in the console, with `pms storage`, or with the API.
@@ -142,7 +157,7 @@ You can now publish a container through a Cloudflare Tunnel in your own Cloudfla
 - Each connector uses 0.05 vCPU and 128 MiB of your compute limit while it is attached.
 - The tunnel can reach any service in the same project. Use a separate project to limit this.
 
-This feature is in beta. Tell us if something does not work. See [Managed Cloudflare Tunnels](/containers/managed-tunnels/).
+This feature is in beta. Tell us if something does not work. See [Cloudflare Tunnel](/networking/cloudflare/). The tunnel moved to project connectors on 2026-10-12.
 
 ## 2026-10-10
 
@@ -186,7 +201,7 @@ See [Install the CLI](/cli/install/) and the [command overview](/cli/commands/).
 
 ### Connect to a database from your computer
 
-`pms db connect` opens a local port to a database through the SSH jump host. Use it with `psql` or any Postgres client. The database stays private. All project members can connect. See [Connect from your computer](/databases/connect-from-your-computer/).
+`pms db connect` opens a local port to a database through the SSH jump host. Use it with `psql` or any Postgres client. The database stays private. All project members can connect. See [Networking](/networking/overview/). This command is removed on 2026-10-12.
 
 ### Container private ports
 

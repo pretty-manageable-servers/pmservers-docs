@@ -49,8 +49,7 @@ See [Connect from a container](/databases/connect/).
 A database has no public address. Nothing is open to the internet.
 
 - The containers of the **same project** can connect to it. Containers in other projects of your account cannot.
-- You can connect from your computer with the PMS CLI. The command `pms db connect` opens a local port through the SSH jump host. All members of the project can use it. See [Connect from your computer](/databases/connect-from-your-computer/).
-- Hosted apps cannot use `pms db connect`. It works only where the CLI runs.
+- You can connect from your computer with a [network connector](/networking/overview/). A connector reaches the database only when you select it.
 
 - Containers need approval for each account. See [Containers](/containers/overview/).
 
