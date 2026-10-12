@@ -7,6 +7,14 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-12
 
+### CLI v0.9.0: session in a file, no keychain
+
+The `pms` CLI no longer uses the OS keychain. It keeps your session in `~/.config/pms/credentials.json`, with mode `0600`. On macOS, this stops the keychain prompts.
+
+After you update, run `pms login` one time. The CLI does not read the old keychain item. You can delete the `pms-cli` item in Keychain Access.
+
+Get it from [GitHub releases](https://github.com/pretty-manageable-servers/pmservers-cli/releases/tag/v0.9.0). See [Sign in](/cli/sign-in/).
+
 ### Sandbox templates and warm pool
 
 You can now build your own sandbox image, called a template, with the official `e2b` SDK. Start a sandbox from it with its name:
