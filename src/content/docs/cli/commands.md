@@ -1,6 +1,6 @@
 ---
 title: Command overview
-description: The pms commands for projects, members, SSH keys, containers, registry credentials, databases, AI keys, catalog, events and access.
+description: The pms commands for projects, members, containers, registry credentials, databases, AI keys, catalog, events and access.
 sidebar:
   order: 3
 ---
@@ -31,16 +31,6 @@ pms member remove <email|user-id>
 ```
 
 See [Project members](/get-started/members/).
-
-## SSH keys
-
-```sh
-pms ssh-key list
-pms ssh-key add <name> [--file <file> | --key <key>]
-pms ssh-key delete <id>
-```
-
-`ssh-key add` reads the key from standard input if you give no key or file.
 
 ## Containers
 

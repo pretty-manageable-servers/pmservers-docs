@@ -39,16 +39,6 @@ See [Project members](/get-started/members/).
 | `POST` | `/projects/{p}/members` | Add a member. Owner only. Body: `{"email": "..."}`. Returns `201` with `invited: true` if the person had no account and got an invite email. `409` if they are already a member. |
 | `DELETE` | `/projects/{p}/members/{user_id}` | The owner removes a member, or a member removes themselves to leave. The owner cannot leave. Returns `204`. |
 
-## SSH keys
-
-Saved on your account, not on a project. Public keys only. Up to 20.
-
-| Method | Path | Use |
-|---|---|---|
-| `GET` | `/ssh-keys` | List saved public keys. |
-| `POST` | `/ssh-keys` | Save a key. Body: `{"name": "...", "public_key": "ssh-ed25519 ..."}`. |
-| `DELETE` | `/ssh-keys/{k}` | Delete a saved key. Returns `204`. |
-
 ## Registry credentials
 
 Saved on your account, not on a project. Up to 10. See [Registry credentials](/containers/registry-credentials/).

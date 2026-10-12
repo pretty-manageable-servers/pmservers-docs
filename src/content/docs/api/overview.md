@@ -10,7 +10,7 @@ PMS Cloud has two APIs.
 | API | Base URL | Auth | Use |
 |---|---|---|---|
 | [AI API](/api/ai/) | `https://api.pmservers.org/ai/v1` | AI key (`pms_sk_...`) | Call AI models. OpenAI-compatible. |
-| [Management API](/api/management/) | `https://api.pmservers.org/v1` | Console sign-in token, or a [project token](/api/tokens/) | Manage projects, containers, databases, SSH keys and AI keys. |
+| [Management API](/api/management/) | `https://api.pmservers.org/v1` | Console sign-in token, or a [project token](/api/tokens/) | Manage projects, containers, databases and AI keys. |
 
 ## Management API auth
 

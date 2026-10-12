@@ -20,6 +20,7 @@ There is a new **Networking** page in the console. A project can have a Tailscal
 - The container tunnel fields are removed from the API and the CLI. A request that still sends `tunnel_port`, `tunnel_token` or `detach_tunnel` fails. Use a project connector instead. If a project had more than one tunnel token, only the oldest token is kept. It moves to the project Cloudflare Tunnel connector.
 - `pms db connect` is removed. To connect from your computer, use a [Tailscale](/networking/tailscale/) or [Cloudflare Tunnel](/networking/cloudflare/) connector.
 - The SSH jump host `jump.pmservers.org` is shut down. It no longer accepts connections.
+- Saved SSH keys are removed. This covers the API routes `/v1/ssh-keys`, the `pms ssh-key` commands and the SSH keys card in the console.
 - Tailscale is in beta. Check it on a test project before you use it for important work.
 
 ### Object storage (beta)

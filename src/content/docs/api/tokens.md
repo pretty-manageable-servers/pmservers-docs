@@ -63,10 +63,9 @@ A token works on its own project only.
 |---|---|
 | Read your user, the catalog, and the project list (its project only) | Create, change or delete a project |
 | Read the project, its usage and its events | Create or revoke tokens |
-| Use the containers and databases of the project | Manage SSH keys |
-| Get a console ticket and reset a database password | Manage members |
-| List registry credentials | Add, change or delete registry credentials |
-| | Manage AI keys |
+| Use the containers and databases of the project | Manage members |
+| Get a console ticket and reset a database password | Add, change or delete registry credentials |
+| List registry credentials | Manage AI keys |
 | | Manage account access |
 | | Use admin routes |
 
