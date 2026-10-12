@@ -12,11 +12,11 @@ Object storage is built on Garage. Garage does not support every S3 feature. PMS
 | Feature | Status |
 |---|---|
 | Versioning | Not supported. `GetBucketVersioning` returns that versioning is not enabled. |
-| Bucket policies | Not supported. Use access keys and [public read](/storage/public-read/). |
+| Bucket policies | Not supported. Use access keys and [presigned URLs](/storage/share/). |
 | ACLs | Not supported. |
 | Object lock | Not supported. |
 | Lifecycle rules | Not supported. Garage has a partial lifecycle API (expiration and abort of incomplete uploads). Do not rely on it. |
-| Anonymous S3 API | Not supported. The S3 endpoint needs a signed request. Anonymous read works only with [public read](/storage/public-read/). |
+| Anonymous S3 API | Not supported. The S3 endpoint needs a signed request. To share a file, use a [presigned URL](/storage/share/). |
 | Virtual-host style | Not supported. Use path style. See [Quick start](/storage/quick-start/#path-style-is-required). |
 
 ## Other limits
@@ -25,7 +25,6 @@ Object storage is built on Garage. Garage does not support every S3 feature. PMS
 - **No backups.** If the disk fails, the data is lost. Keep your own copy of data that you need.
 - **100 MB for each request body.** Use multipart upload for larger files.
 - **Multipart checksums.** Objects that were uploaded in parts need `response_checksum_validation = when_required` in the AWS SDKs. See [Quick start](/storage/quick-start/).
-- **Website mode for public read.** It serves `index.html` for folder paths. It does not list files and does not redirect. See [Public read](/storage/public-read/).
 - **Limits and states.** See [Limits and states](/storage/limits/).
 
 ## Garage

@@ -29,9 +29,9 @@ We check the storage use of each account each minute. The state depends on the s
 
 | Storage use | State | What you can do |
 |---|---|---|
-| Below 100% | `active` | Your keys work as set. Public read works. |
-| 100% or more | `read_only` | Read and delete objects. You cannot add data. Public read works. |
-| 125% or more | `suspended` | No access with your keys. Public read stops. Contact support. |
+| Below 100% | `active` | Your keys work as set. |
+| 100% or more | `read_only` | Read and delete objects. You cannot add data. |
+| 125% or more | `suspended` | No access with your keys. Contact support. |
 | Below 90% again | `active` | Back to normal. |
 
 Between 90% and 100%, the state does not change. This stops the state from changing again and again.
@@ -42,7 +42,7 @@ In `read_only`, your read-write keys can still delete objects. A bucket cannot g
 
 ## Suspended
 
-When the account is `suspended`, your keys do not work and public read stops. Contact support.
+When the account is `suspended`, your keys do not work. Presigned URLs stop too. Contact support.
 
 ## Overshoot
 

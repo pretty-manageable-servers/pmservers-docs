@@ -23,8 +23,7 @@ pms storage disable
 
 ```sh
 pms storage bucket ls
-pms storage bucket create <name> [--public]
-pms storage bucket public <name> on|off
+pms storage bucket create <name>
 pms storage bucket rm <name>
 ```
 
@@ -49,7 +48,7 @@ The secret is shown one time. See [Buckets and access keys](/storage/buckets-and
 
 ```sh
 pms storage enable
-pms storage bucket create my-bucket --public
+pms storage bucket create my-bucket
 eval "$(pms storage key create ci --env)"
 aws s3 cp ./build.zip s3://my-bucket/build.zip
 pms storage key rm <key-id>

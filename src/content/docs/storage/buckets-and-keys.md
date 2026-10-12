@@ -25,17 +25,14 @@ A taken name returns `409`. A reserved or invalid name returns `422`.
 
 ```sh
 pms storage bucket create my-bucket
-pms storage bucket create my-public-bucket --public
 ```
 
-Use `--public` for [public read](/storage/public-read/). You can change it later.
+To share a file from a bucket, see [Share a file](/storage/share/).
 
 ### List, change and delete a bucket
 
 ```sh
 pms storage bucket ls
-pms storage bucket public my-bucket on
-pms storage bucket public my-bucket off
 pms storage bucket rm my-bucket
 ```
 

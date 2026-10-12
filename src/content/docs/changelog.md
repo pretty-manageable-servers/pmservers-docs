@@ -13,7 +13,7 @@ Object storage is in beta. It stores files in buckets and has an S3 API. Only ap
 
 - Endpoint: `https://s3.pmservers.org`. Region: `pms`. Use path style. The AWS SDKs and the AWS CLI need path style and `response_checksum_validation = when_required`.
 - Free: 10 GiB, 10 buckets and 20 access keys for each account.
-- Public read for a bucket: `https://<bucket>-pub.pmservers.org/<key>`.
+- No public read. To share a file, make a presigned URL. See [Share a file](/storage/share/).
 - Storage above 10 GiB costs $0.014 for each GiB-month. We meter it now and do not charge it yet.
 - Object storage has no backups. It uses Garage, and Garage does not support versioning, bucket policies, ACLs or object lock.
 

@@ -17,9 +17,8 @@ Project members add `?account_id=<owner-id>` to each request.
 | `POST` | `/v1/storage/enable` | Turn on object storage. Approved accounts only. |
 | `POST` | `/v1/storage/disable` | Turn off object storage. Only with no buckets. |
 | `GET` | `/v1/storage/buckets` | List buckets. |
-| `POST` | `/v1/storage/buckets` | Make a bucket. Body: `{"name": "my-bucket", "public_read": false}`. |
+| `POST` | `/v1/storage/buckets` | Make a bucket. Body: `{"name": "my-bucket"}`. |
 | `GET` | `/v1/storage/buckets/{name}` | Get a bucket. |
-| `PATCH` | `/v1/storage/buckets/{name}` | Change `public_read`. |
 | `DELETE` | `/v1/storage/buckets/{name}` | Delete an empty bucket. |
 | `GET` | `/v1/storage/keys` | List access keys. |
 | `POST` | `/v1/storage/keys` | Make a key. Body: `{"name": "ci", "permission": "read_write", "buckets": "all"}`. `buckets` is `"all"` or a list of bucket names. The response has `secret_access_key` one time, with `endpoint` and `region`. |

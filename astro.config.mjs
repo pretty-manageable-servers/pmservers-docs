@@ -75,7 +75,7 @@ export default defineConfig({
                   'storage/quick-start',
                   'storage/from-containers',
                   'storage/buckets-and-keys',
-                  'storage/public-read',
+                  'storage/share',
                   'storage/limits',
                   'storage/limitations',
                   'storage/pricing',

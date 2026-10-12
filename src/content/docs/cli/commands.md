@@ -107,7 +107,7 @@ Shows the sizes, images and AI models that you can use.
 ```sh
 pms storage status
 pms storage enable | disable
-pms storage bucket ls | create <name> [--public] | public <name> on|off | rm <name>
+pms storage bucket ls | create <name> | rm <name>
 pms storage key ls | create <name> [--read-only] [--bucket B ...] [--env] | reset <key-id> [--env] | rm <key-id>
 ```
 

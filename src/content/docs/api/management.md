@@ -117,9 +117,8 @@ Object storage is for approved accounts. The project owner's account is used. Me
 | `POST` | `/storage/enable` | Turn on object storage. Returns `202`. `403` if the account is not approved. |
 | `POST` | `/storage/disable` | Turn off object storage. Returns `202`. `409` if buckets are left. |
 | `GET` | `/storage/buckets` | List buckets. |
-| `POST` | `/storage/buckets` | Make a bucket. Body: `{"name": "...", "public_read": false}`. Returns `202`. `409` if the name is taken. `409` `quota_exceeded` at 10 buckets. |
+| `POST` | `/storage/buckets` | Make a bucket. Body: `{"name": "..."}`. Returns `202`. `409` if the name is taken. `409` `quota_exceeded` at 10 buckets. |
 | `GET` | `/storage/buckets/{name}` | Get a bucket. |
-| `PATCH` | `/storage/buckets/{name}` | Body: `{"public_read": true}`. Returns `202`. |
 | `DELETE` | `/storage/buckets/{name}` | Delete an empty bucket. Returns `202`. |
 | `GET` | `/storage/keys` | List access keys. |
 | `POST` | `/storage/keys` | Make a key. Body: `{"name": "...", "permission": "read_write" or "read_only", "buckets": "all" or ["bucket", ...]}`. Returns `201` with `secret_access_key` one time, `endpoint` and `region`. `409` `quota_exceeded` at 20 keys. |
