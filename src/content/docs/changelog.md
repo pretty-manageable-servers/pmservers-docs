@@ -7,6 +7,18 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-12
 
+### Object storage (beta)
+
+Object storage is in beta. It stores files in buckets and has an S3 API. Only approved accounts can turn it on. Use it in the console, with `pms storage`, or with the API.
+
+- Endpoint: `https://s3.pmservers.org`. Region: `pms`. Use path style. The AWS SDKs and the AWS CLI need path style and `response_checksum_validation = when_required`.
+- Free: 10 GiB, 10 buckets and 20 access keys for each account.
+- No public read. To share a file, make a presigned URL. See [Share a file](/storage/share/).
+- Storage above 10 GiB costs $0.014 for each GiB-month. We meter it now and do not charge it yet.
+- Object storage has no backups. It uses Garage, and Garage does not support versioning, bucket policies, ACLs or object lock.
+
+See [Object storage](/storage/overview/) and [Limitations](/storage/limitations/).
+
 ### Email when your limits change
 
 When the PMServers team changes a limit of your account (vCPU, memory, AI budget, AI keys, containers, databases, database storage or sandboxes), you get an email. It gives the old and the new value of each limit that changed. If a limit is now lower than your use, your running resources keep running. Only new creates are blocked. See [Limits](/billing/limits/).
