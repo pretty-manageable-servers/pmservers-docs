@@ -30,6 +30,7 @@ Use the AI API with an AI key from your code.
 |---|---|---|
 | `401` | `unauthorized` | No token, or the token expired. Sign in again. |
 | `403` | `not_allowed` | You cannot do this. |
+| `403` | `account_terminated` | The PMServers team terminated this account. Contact the team. |
 | `404` | `not_found` | The resource does not exist, or it is not yours. |
 | `409` | `quota_exceeded` | You are at a limit. See [Limits](/billing/limits/). |
 | `409` | `conflict` | The resource is not in the right state, for example the container is not running. |
