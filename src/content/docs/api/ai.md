@@ -13,6 +13,8 @@ The OpenAPI spec is at [`/openapi.json`](/openapi.json).
 |---|---|---|---|
 | `GET` | `/models` | — | OpenAI model list. Only the models of the key. |
 | `POST` | `/chat/completions` | OpenAI chat request. `model` must be an `llm` model. | OpenAI chat response, or an SSE stream with `"stream": true`. |
+| `POST` | `/responses` | OpenAI Responses request. `model` must be an `llm` model. | OpenAI Response object, or native Responses SSE events. |
+| `POST` | `/messages` | Anthropic Messages request. `model` must be an `llm` model. | Anthropic Message object, or native Messages SSE events. |
 | `POST` | `/embeddings` | OpenAI embeddings request. `model` must be `stratus`. | OpenAI embeddings response. 768 dimensions. |
 | `POST` | `/systemone` | System One request. `model` must be `vane`. | System One response. See [Vane](/ai/vane/). |
 | `POST` | `/audio/transcriptions` | Multipart form: `model`, `file`, and optional `response_format` and `language`. `model` must be `squall`. | Speech to text. JSON or plain text. See [Speech to text](#speech-to-text). |
@@ -23,7 +25,42 @@ The OpenAPI spec is at [`/openapi.json`](/openapi.json).
 - `model` in the answer is our model ID, for example `cirrus`.
 - `system_fingerprint` is always `null`.
 - The answer has no cost field. See [AI billing](/billing/ai-billing/).
-- In a stream, `usage` comes in the last content chunk (the chunk with `finish_reason`), if you send `"stream_options": {"include_usage": true}`. There is no separate usage chunk.
+- In a chat stream, `usage` comes in the last content chunk (the chunk with `finish_reason`), if you send `"stream_options": {"include_usage": true}`. There is no separate usage chunk.
+
+## Responses and tools
+
+Use your OpenAI SDK with base URL `https://api.pmservers.org/ai/v1` and call
+`responses.create`. Send `input`, `tools`, and `tool_choice` in Responses format.
+Native tool calls appear as `function_call` output items. Execute the function in
+your client and send a `function_call_output` item with the matching `call_id` in
+the next request's `input`, together with the conversation history.
+
+Responses are stateless. `store` is forced to `false` when omitted. Explicit
+`store: true`, `previous_response_id`, `conversation`, and `background: true`
+return `400`. Response retrieval and deletion are not supported.
+
+With `stream: true`, native events such as `response.function_call_arguments.delta`
+and `response.completed` are preserved. Usage stays in the Response object;
+`stream_options.include_usage` is only for Chat Completions.
+
+## Anthropic Messages
+
+Set your Anthropic SDK's base URL to `https://api.pmservers.org/ai`; the SDK appends
+`/v1/messages`. Set its API key to your `pms_sk_...` key. Direct requests to
+`/ai/v1/messages` accept `x-api-key` or `Authorization: Bearer`. If both are sent,
+the bearer header takes precedence. Use the SDK's `anthropic-version` header;
+`anthropic-beta` is also forwarded to the model service.
+
+Send `messages`, `max_tokens`, and tools with `input_schema` in Anthropic format.
+Native calls appear as `tool_use` content blocks. Execute the function in your
+client and return a `tool_result` block with the matching `tool_use_id` in a user
+message, together with the conversation history. Streaming preserves Messages
+events and tool argument deltas. Errors use the native Anthropic error envelope.
+
+These routes use the same model permissions, key rate limit, and account/key
+budgets as Chat Completions. Choose a model returned by `/models`; protocol
+compatibility does not add Claude models to your key. Tool support depends on
+the selected model. PMS does not execute your functions.
 
 ## Embeddings example
 
