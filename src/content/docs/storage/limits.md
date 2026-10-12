@@ -30,7 +30,7 @@ We check the storage use of each account each minute. The state depends on the s
 | Storage use | State | What you can do |
 |---|---|---|
 | Below 100% | `active` | Your keys work as set. Public read works. |
-| 100% or more | `read_only` | Read objects. You cannot write or delete objects. Public read works. |
+| 100% or more | `read_only` | Read and delete objects. You cannot add data. Public read works. |
 | 125% or more | `suspended` | No access with your keys. Public read stops. Contact support. |
 | Below 90% again | `active` | Back to normal. |
 
@@ -38,7 +38,7 @@ Between 90% and 100%, the state does not change. This stops the state from chang
 
 ## Free space in a read-only account
 
-In `read_only`, you cannot delete objects. Contact support to free space.
+In `read_only`, your read-write keys can still delete objects. A bucket cannot get larger. Delete data until the account is below 90%. Then the state goes back to `active` within about one minute.
 
 ## Suspended
 
