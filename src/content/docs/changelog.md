@@ -5,6 +5,25 @@ description: Changes to PMS Cloud, newest first. We release changes when they ar
 
 PMS Cloud changes all the time. We release a change when it is ready. Each entry has the date it went live, newest first.
 
+## 2026-10-12
+
+### Sandbox templates and warm pool
+
+You can now build your own sandbox image, called a template, with the official `e2b` SDK. Start a sandbox from it with its name:
+
+```python
+Template.build(template, "my-site")
+sbx = Sandbox.create("my-site")
+```
+
+A template can have packages, files, environment variables, a start command and a ready check. Use `name:tag` to keep more than one version.
+
+A warm pool keeps sandboxes of a template ready. A create from a template takes about 2.5 to 3 seconds when a warm sandbox is free, and about 13 seconds when none is free.
+
+Not supported yet: tag routes in the API, private base image registries, public templates and template commands in the `pms` CLI.
+
+See [Templates](/sandboxes/templates/) and [Warm pool](/sandboxes/warm-pool/).
+
 ## 2026-10-11
 
 ### VM service removed

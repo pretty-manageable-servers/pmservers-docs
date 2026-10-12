@@ -75,6 +75,8 @@ await sbx.kill();
 
 Kill each sandbox when you finish. A sandbox counts against your limit until it is killed or its timeout ends.
 
+To start sandboxes from your own image, with packages and files, see [Templates](/sandboxes/templates/). A template can use a [warm pool](/sandboxes/warm-pool/) for faster starts.
+
 ## Lifetime
 
 A sandbox stops when its timeout ends. A killed sandbox is not found by get, list or connect. There is no idle timeout yet.
@@ -115,7 +117,7 @@ These features return `501`:
 - Pause and resume
 - Snapshots
 - Fork
-- Templates
+- Some template features. See [Templates](/sandboxes/templates/#not-supported).
 - Volumes
 - Logs and metrics
 - Custom network rules
