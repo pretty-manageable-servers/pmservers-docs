@@ -13,7 +13,7 @@ There is a new **Networking** page in the console. A project can have a Tailscal
 
 - [Tailscale](/networking/tailscale/) is in beta.
 - [Cloudflare Tunnel](/networking/cloudflare/) moves here from the containers.
-- Use `pms network` in the CLI, or the project connector endpoints in the [management API](/api/management/#network-connectors).
+- Use `pms network` in the CLI ([v0.11.0](https://github.com/pretty-manageable-servers/pmservers-cli/releases/tag/v0.11.0)), or the project connector endpoints in the [management API](/api/management/#network-connectors).
 
 ### Breaking changes for networking
 
