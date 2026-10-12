@@ -7,6 +7,14 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-12
 
+### Email when your limits change
+
+When the PMServers team changes a limit of your account (vCPU, memory, AI budget, AI keys, containers, databases, database storage or sandboxes), you get an email. It gives the old and the new value of each limit that changed. If a limit is now lower than your use, your running resources keep running. Only new creates are blocked. See [Limits](/billing/limits/).
+
+### Terminated accounts
+
+The PMServers team can terminate an account. You get an email with the reason. The API then refuses all requests of the account with `403` and the code `account_terminated`. All resources of the account are deleted, then the sign-in is deleted. You can sign up again with the same email, but nothing comes back. See [Management API errors](/api/overview/#management-api-errors).
+
 ### AI prompting guidelines
 
 New page: [Prompting guidelines](/ai/prompting/). It gives the context window and max output of `nimbus` (200K and 50K tokens) and `cirrus` (64K and 32K tokens). It also tells you how to keep the system prompt small, send tools as tool schemas, not cut off the output with a low `max_tokens`, and convert JSON data to short text before you send it.
