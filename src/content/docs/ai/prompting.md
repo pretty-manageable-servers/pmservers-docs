@@ -97,6 +97,13 @@ See the [AI API reference](/api/ai/) for tool round trips.
 ## Send tool errors back to the model
 
 A tool call can fail. For example, an argument is not correct, an ID does not exist, or the tool is blocked.
+All models make bad tool calls sometimes. Even large models, such as Claude Sonnet, do not call tools correctly each time. Your code must expect this.
+
+For example, the model calls `create_poll` with 14 answers, but the limit is 10:
+
+1. Your code does not post the poll. It sends the error back as the tool result.
+2. The model reads the error and calls `create_poll` again with 10 answers.
+3. The poll is posted. The user does not see the first error.
 Do not stop the request at the first error. Send the error back to the model as the tool result. The model reads the error and tries again with a fix.
 
 - Send the error in the tool result message, with the same tool call ID.
