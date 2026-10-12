@@ -15,7 +15,8 @@ Use these rules for all chat endpoints.
 3. Do not send raw JSON dumps. Convert data to short text first.
 4. Send chat history as messages, one message for each turn. Do not put the history in one big string.
 5. Send only the data that the model needs for this request.
-6. Put data that does not change at the start of the prompt. This lets the cache work.
+6. Do not set a low output limit. Let the model finish its answer.
+7. Put data that does not change at the start of the prompt. This lets the cache work.
 
 ## Context limits
 
@@ -26,6 +27,16 @@ Use these rules for all chat endpoints.
 
 The context window holds the input and the output together. For `nimbus`, the output includes the reasoning tokens.
 A big input leaves less space for the answer. For `cirrus`, a 40K-token input leaves only 24K tokens for the output.
+
+## Do not cut off the output
+
+Do not set a low `max_tokens` (or `max_output_tokens` on `/responses`). If the model reaches the limit, it stops in the middle of the answer or the tool call.
+A cut-off tool call has incomplete JSON, and your code cannot run it.
+
+- Do not set `max_tokens`, or set it to the max output of the model.
+- To get short answers, ask for them in the system prompt. Do not use `max_tokens` for this.
+- Check the stop reason. `finish_reason: "length"` (Chat Completions), `status: "incomplete"` (Responses) and `stop_reason: "max_tokens"` (Messages) tell you that the output was cut off.
+- You pay only for the tokens that the model makes, not for the limit.
 
 ## Keep the system prompt short
 
@@ -131,4 +142,5 @@ The cache reads the start of the prompt that is the same as in the last request.
 - All tools are in the `tools` field.
 - No message has escaped JSON (`\"`) in it.
 - Each turn is its own message.
+- `max_tokens` is not set, or is the max output of the model.
 - The `usage` field shows that `prompt_tokens` is not much larger than you expect.
