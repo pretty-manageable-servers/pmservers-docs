@@ -1,0 +1,32 @@
+name: Changelog to Discord
+
+on:
+  push:
+    branches: [main]
+    paths: [src/content/docs/changelog.md]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: changelog-discord
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Get the changelog before this push
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: git show "$BEFORE:src/content/docs/changelog.md" > "$RUNNER_TEMP/old-changelog.md" 2>/dev/null || true
+      - name: Post new entries
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_CHANGELOG_WEBHOOK }}
+        run: node scripts/post-changelog.mjs "$RUNNER_TEMP/old-changelog.md" src/content/docs/changelog.md
