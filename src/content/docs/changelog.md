@@ -7,6 +7,10 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-12
 
+### AI prompting guidelines
+
+New page: [Prompting guidelines](/ai/prompting/). It gives the context window and max output of `nimbus` (200K and 50K tokens) and `cirrus` (64K and 32K tokens). It also tells you how to keep the system prompt small, send tools as tool schemas, not cut off the output with a low `max_tokens`, and convert JSON data to short text before you send it.
+
 ### CLI v0.9.0: session in a file, no keychain
 
 The `pms` CLI no longer uses the OS keychain. It keeps your session in `~/.config/pms/credentials.json`, with mode `0600`. On macOS, this stops the keychain prompts.
