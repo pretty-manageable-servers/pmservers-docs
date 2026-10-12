@@ -62,16 +62,26 @@ No approval needed. See [Databases](/databases/overview/).
 | vCPU and memory | Counts against [Compute](#compute) |
 | Backups | None |
 
-## S3 storage (coming soon)
+## Object storage (beta)
+
+Each account has its own object storage. Only approved accounts can turn it on. See [Object storage](/storage/overview/).
 
 | Limit | Value |
 |---|---|
-| Size of one upload request | 100 MB. Use multipart upload for larger files. |
+| Storage, all buckets together | 10 GiB. Above that, storage is metered at $0.014 for each GiB-month. We do not charge it yet. See [Pricing](/storage/pricing/). |
+| Buckets | 10 |
+| Access keys | 20 |
+| Size of one request body | 100 MB. Use multipart upload for larger files. |
+| Requests per second | 100 for each account. Burst: 300. |
+| Backups | None |
+
+See [Limits and states](/storage/limits/) for the states at 100%, 125% and 90%.
 
 ## Errors
 
 - Management API: `409` with code `quota_exceeded`.
 - AI API: `402 budget_exceeded` or `429 rate_limit_exceeded`.
+- S3 API (object storage): XML errors, for example `SlowDown` (`503`).
 
 The management API also limits requests: 600 in one minute for each user, sessions and API tokens together. After that it returns `429 rate_limited` for one minute.
 

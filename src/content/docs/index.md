@@ -23,4 +23,5 @@ It lists every page as a raw Markdown file. All pages in one file are at `https:
 |---|---|
 | Console | `https://console.pmservers.org` |
 | AI API (OpenAI-compatible) | `https://api.pmservers.org/ai/v1` |
+| Object storage (S3 API, path style, region `pms`) | `https://s3.pmservers.org` |
 | Management API | `https://api.pmservers.org/v1` |

@@ -102,6 +102,17 @@ pms catalog [sizes|images|models]
 
 Shows the sizes, images and AI models that you can use.
 
+## Object storage
+
+```sh
+pms storage status
+pms storage enable | disable
+pms storage bucket ls | create <name> [--public] | public <name> on|off | rm <name>
+pms storage key ls | create <name> [--read-only] [--bucket B ...] [--env] | reset <key-id> [--env] | rm <key-id>
+```
+
+Sign in with `pms login`. API tokens cannot use object storage. See [CLI commands for object storage](/storage/cli/).
+
 ## Events
 
 ```sh

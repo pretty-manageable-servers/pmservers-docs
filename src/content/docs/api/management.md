@@ -107,6 +107,29 @@ Container object (env values are never returned):
 | `POST` | `/projects/{p}/ai-keys/{k}/rotate` | Make a new secret. The old secret stops at once. |
 | `DELETE` | `/projects/{p}/ai-keys/{k}` | Revoke the key. Returns `204`. |
 
+## Object storage
+
+Object storage is for approved accounts. The project owner's account is used. Members add `?account_id=<owner-id>`. Sign-in only: API tokens get `403`. See [Object storage](/storage/overview/) and [API](/storage/api/).
+
+| Method | Path | Use |
+|---|---|---|
+| `GET` | `/storage` | The state, the storage used, the limit, the number of buckets and keys, and `would_cost_usd`. |
+| `POST` | `/storage/enable` | Turn on object storage. Returns `202`. `403` if the account is not approved. |
+| `POST` | `/storage/disable` | Turn off object storage. Returns `202`. `409` if buckets are left. |
+| `GET` | `/storage/buckets` | List buckets. |
+| `POST` | `/storage/buckets` | Make a bucket. Body: `{"name": "...", "public_read": false}`. Returns `202`. `409` if the name is taken. `409` `quota_exceeded` at 10 buckets. |
+| `GET` | `/storage/buckets/{name}` | Get a bucket. |
+| `PATCH` | `/storage/buckets/{name}` | Body: `{"public_read": true}`. Returns `202`. |
+| `DELETE` | `/storage/buckets/{name}` | Delete an empty bucket. Returns `202`. |
+| `GET` | `/storage/keys` | List access keys. |
+| `POST` | `/storage/keys` | Make a key. Body: `{"name": "...", "permission": "read_write" or "read_only", "buckets": "all" or ["bucket", ...]}`. Returns `201` with `secret_access_key` one time, `endpoint` and `region`. `409` `quota_exceeded` at 20 keys. |
+| `GET` | `/storage/keys/{key_id}` | Get a key. |
+| `PATCH` | `/storage/keys/{key_id}` | Change `name`, `permission` or `buckets`. Returns `202`. |
+| `DELETE` | `/storage/keys/{key_id}` | Delete a key. Returns `204`. |
+| `POST` | `/storage/keys/{key_id}/reset` | Make a new key ID and secret, with the same settings. The old key stops working. Returns the new secret one time. |
+
+The paths above are under `/v1`. For example, `GET /v1/storage`.
+
 ## Events
 
 | Method | Path | Use |
