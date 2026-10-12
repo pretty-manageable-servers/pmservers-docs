@@ -11,7 +11,7 @@ sidebar:
 pms login
 ```
 
-The command prints a short code and opens the sign-in page. Sign in with GitHub, check that the code is the same, then allow the request. The CLI then has its own session. The code expires after 10 minutes and works once. It saves the session in the OS keychain. If the system has no keychain, the CLI saves it in `~/.config/pms/credentials.json` with mode `0600`.
+The command prints a short code and opens the sign-in page. Sign in with GitHub, check that the code is the same, then allow the request. The CLI then has its own session. The code expires after 10 minutes and works once. It saves the session in `~/.config/pms/credentials.json` with mode `0600`. The CLI does not use the OS keychain, so it does not ask for keychain access. If an older version saved the session in the keychain, the CLI moves it to that file the first time it finds no session file.
 
 | Option | Use |
 |---|---|
