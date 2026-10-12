@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
     paths: [src/content/docs/changelog.md]
+  workflow_dispatch:
+    inputs:
+      before:
+        description: Commit to compare against. Entries added after it are posted.
+        required: true
 
 permissions:
   contents: read
@@ -24,7 +29,7 @@ jobs:
           node-version: 22
       - name: Get the changelog before this push
         env:
-          BEFORE: ${{ github.event.before }}
+          BEFORE: ${{ inputs.before || github.event.before }}
         run: git show "$BEFORE:src/content/docs/changelog.md" > "$RUNNER_TEMP/old-changelog.md" 2>/dev/null || true
       - name: Post new entries
         env:
