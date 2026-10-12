@@ -17,7 +17,7 @@ The PMServers team can terminate an account. You get an email with the reason. T
 
 ### AI prompting guidelines
 
-New page: [Prompting guidelines](/ai/prompting/). It gives the context window and max output of `nimbus` (200K and 50K tokens) and `cirrus` (64K and 32K tokens). It also tells you how to keep the system prompt small, send tools as tool schemas, not cut off the output with a low `max_tokens`, and convert JSON data to short text before you send it.
+New page: [Prompting guidelines](/ai/prompting/). It gives the context window and max output of `nimbus` (200K and 50K tokens) and `cirrus` (64K and 32K tokens). It also tells you how to keep the system prompt small, send tools as tool schemas, not cut off the output with a low `max_tokens`, send tool errors back to the model so it can try again, and convert JSON data to short text before you send it.
 
 ### CLI v0.9.0: session in a file, no keychain
 

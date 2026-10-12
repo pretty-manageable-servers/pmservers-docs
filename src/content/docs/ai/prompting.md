@@ -17,6 +17,7 @@ Use these rules for all chat endpoints.
 5. Send only the data that the model needs for this request.
 6. Do not set a low output limit. Let the model finish its answer.
 7. Put data that does not change at the start of the prompt. This lets the cache work.
+8. When a tool call fails, send the error back to the model as the tool result. Do not stop the request.
 
 ## Context limits
 
@@ -93,6 +94,28 @@ Mark the required parameters. Send only the tools that this request can use.
 
 See the [AI API reference](/api/ai/) for tool round trips.
 
+## Send tool errors back to the model
+
+A tool call can fail. For example, an argument is not correct, an ID does not exist, or the tool is blocked.
+Do not stop the request at the first error. Send the error back to the model as the tool result. The model reads the error and tries again with a fix.
+
+- Send the error in the tool result message, with the same tool call ID.
+- Make the error useful. Tell what went wrong and what the model can do. A general error, such as `failed`, does not help the model.
+- If the model cannot fix the error, for example because the tool is blocked by a rule, say so in the error. Then the model does not try again.
+- Set a limit on the number of retries, for example 3, so that a loop cannot continue forever.
+
+Bad:
+
+```json
+{"role": "tool", "tool_call_id": "call_1", "content": "error"}
+```
+
+Good:
+
+```json
+{"role": "tool", "tool_call_id": "call_1", "content": "Error: create_poll accepts max 10 answers. You sent 14. Send 10 or fewer."}
+```
+
 ## Do not send raw JSON dumps
 
 Do not put serialized objects into a system or user message. Escaped JSON (`\"text\":\"...\"`) is the worst case.
@@ -143,4 +166,5 @@ The cache reads the start of the prompt that is the same as in the last request.
 - No message has escaped JSON (`\"`) in it.
 - Each turn is its own message.
 - `max_tokens` is not set, or is the max output of the model.
+- Tool errors go back to the model as tool results, with a useful message and a retry limit.
 - The `usage` field shows that `prompt_tokens` is not much larger than you expect.
