@@ -5,6 +5,25 @@ description: Changes to PMS Cloud, newest first. We release changes when they ar
 
 PMS Cloud changes all the time. We release a change when it is ready. Each entry has the date it went live, newest first.
 
+## 2026-10-14
+
+### Slopbot: voice in voice channels
+
+Use `/slopbot voice action:join` to make Slopbot join your voice channel. You speak, and Slopbot answers with its normal model and tools. It posts the answer in the voice channel text chat and reads it aloud. See [Voice](/slopbot/voice/).
+
+- Your speech is posted in the text chat as you.
+- Spoken answers are short. Speech stops at 600 characters.
+- Slopbot handles one speaker at a time.
+- Speech and replies count toward your usage limits.
+
+### Slopbot: inbox
+
+Ask Slopbot to put a message in a member's inbox. Slopbot writes a short summary with links to the source messages. See [Inbox](/slopbot/inbox/).
+
+- Read your inbox with `/inbox`, the Inbox tab in the web console, or by asking Slopbot.
+- Each member can add 20 items a day.
+- Items are deleted 30 days after they are made.
+
 ## 2026-10-13
 
 ### Slopbot: full resets and a web chat fix
