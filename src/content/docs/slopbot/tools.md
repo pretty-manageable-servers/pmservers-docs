@@ -80,7 +80,6 @@ These tools need the Manage Server permission:
 - `tool_display`: sets how much tool activity Discord shows.
 - `timing`: turns timing footers on or off.
 - `default_effort`: sets the default reasoning effort for the server.
-- `status`: shows models, context budgets and monitored channels.
 - `why`: explains the latest monitoring decision in a channel.
 
 ## Remote tools (MCP)

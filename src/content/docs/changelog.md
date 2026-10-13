@@ -7,6 +7,12 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-13
 
+### Slopbot: full resets and a web chat fix
+
+- A banked weekly reset is now a **full reset**. It clears your 5-hour and 7-day usage. See [Usage and limits](/slopbot/usage-and-limits/#resets).
+- In a new web chat, a second message sent soon after the first no longer goes to a new, hidden chat.
+- The `status` tool is removed. Slopbot no longer shares details about its models or its setup.
+
 ### Slopbot: more tools in web chats, a sandbox with Python and Node.js
 
 - Private web chats can now use all Slopbot tools except the tools that act on Discord. This includes the sandbox. See [Tools](/slopbot/tools/).
