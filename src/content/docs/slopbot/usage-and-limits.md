@@ -34,9 +34,11 @@ Members see usage as a percent of each limit. Members do not see money amounts. 
 
 ## Resets
 
-A banked reset clears one window at once. Use it when you need to work before the window ends.
+A banked reset clears your usage. Use it when you need to work before the window ends. There are two types:
 
-- A team admin can give you banked resets for a window.
+- A **5-hour reset** clears the 5-hour window.
+- A **full reset** clears the 5-hour window and the 7-day window.
+
+- A team admin can give you banked resets.
 - To use a reset, use the reset option of `/usage`, or select **Use a reset** in the web console.
-- You can use a reset on the 5-hour window or the 7-day window.
-- If you have no banked reset for that window, Slopbot tells you.
+- If you have no banked reset of that type, Slopbot tells you.
