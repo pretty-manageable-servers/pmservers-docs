@@ -5,6 +5,12 @@ description: Changes to PMS Cloud, newest first. We release changes when they ar
 
 PMS Cloud changes all the time. We release a change when it is ready. Each entry has the date it went live, newest first.
 
+## 2026-10-13
+
+### Slopbot docs
+
+There is a new **Slopbot** section. It covers what Slopbot does, how to add it to a server and how to use the web console. It also covers the tools, the usage limits and privacy. See [Slopbot](/slopbot/overview/).
+
 ## 2026-10-12
 
 ### Networking

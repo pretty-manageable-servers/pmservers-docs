@@ -69,6 +69,7 @@ export default defineConfig({
               { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },
               { label: 'Networking', items: [{ autogenerate: { directory: 'networking' } }] },
               { label: 'Sandboxes', items: [{ autogenerate: { directory: 'sandboxes' } }] },
+              { label: 'Slopbot', items: [{ autogenerate: { directory: 'slopbot' } }] },
               {
                 label: 'Storage',
                 items: [

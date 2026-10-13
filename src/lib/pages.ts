@@ -11,6 +11,7 @@ const SECTION_ORDER = [
   'databases',
   'networking',
   'sandboxes',
+  'slopbot',
   'storage',
   'billing',
   'agents',
