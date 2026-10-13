@@ -1,18 +1,13 @@
 ---
 title: Usage and limits
-description: Each member has a 5-hour limit and a 7-day limit for Slopbot in each server. Learn how the windows, the grace and the resets work.
+description: Each member has a 5-hour limit and a 7-day limit for Slopbot in each server. Learn how the windows, the grace and the resets work. The limits can change.
 sidebar:
   order: 5
 ---
 
-Slopbot limits how much each member can use it. Each member has two limits in each server.
+Slopbot limits how much each member can use it. Each member has two limits in each server: one for a 5-hour window and one for a 7-day window.
 
-| Window | Default limit |
-|---|---|
-| 5 hours | $2.00 of model cost |
-| 7 days | $20.00 of model cost |
-
-The limit counts the cost of the model calls that Slopbot makes for you. It does not count messages. A server admin can change these limits. A limit of 0 means that the window has no limit.
+The limits count the model work that Slopbot does for you. They do not count messages. The PMServers team sets the limits and can change them at any time, for example to balance load. This page does not give the limit values, because they can change.
 
 ## How a window works
 
@@ -34,7 +29,7 @@ Members see usage as a percent of each limit. Members do not see money amounts. 
 
 - Slopbot does not start new work for you when a window is at its limit.
 - Slopbot tells you when you can try again.
-- A run that started before the limit can go past it. It can go up to 10% past the limit. This is the grace.
+- A run that started before the limit can go a small amount past it. This is the grace.
 - When a run goes past the grace, Slopbot stops its later tool rounds.
 
 ## Resets
