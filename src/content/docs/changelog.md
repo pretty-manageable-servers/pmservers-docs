@@ -7,6 +7,15 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-13
 
+### Slopbot: more tools in web chats, a sandbox with Python and Node.js
+
+- Private web chats can now use all Slopbot tools except the tools that act on Discord. This includes the sandbox. See [Tools](/slopbot/tools/).
+- The sandbox now has Python 3 with common data packages, Node.js with npm, git, curl, jq, ripgrep, SQLite and build tools.
+- Links to chats are now `slopbot.pmservers.org/chat/<id>`, and links to channels are `slopbot.pmservers.org/team/<id>`. Old links still work.
+- Code blocks have syntax colors and a **Copy** button. The run details are shorter.
+- You can drag the edge of the chat list to change its width.
+- When web search does not work, Slopbot tells you. It no longer says that there are no results.
+
 ### Slopbot docs
 
 There is a new **Slopbot** section. It covers what Slopbot does, how to add it to a server and how to use the web console. It also covers the tools, the usage limits and privacy. See [Slopbot](/slopbot/overview/).

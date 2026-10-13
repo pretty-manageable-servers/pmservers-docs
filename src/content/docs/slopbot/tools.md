@@ -7,7 +7,7 @@ sidebar:
 
 Slopbot uses tools to do work. A tool can read, search or change things. A server admin chooses how much tool activity Discord shows: none, summary or full.
 
-Work that changes things runs in a task thread. Slopbot moves a write request from a channel into a task thread. In a private chat, Slopbot can use read tools only.
+In Discord, work that changes things runs in a task thread. Slopbot moves a write request from a channel into a task thread. In a private web chat, Slopbot can use all tools except the tools that act on Discord, such as threads, reactions and channel settings. It does the work in the chat, with no task thread.
 
 ## Search and memory
 
@@ -44,7 +44,7 @@ A file link lasts 1 hour by default. A link can last up to 7 days. Anyone with a
 
 | Tool | What it does |
 |---|---|
-| `sandbox` | Runs commands and reads or writes files in a Linux sandbox. Each task thread has its own sandbox. |
+| `sandbox` | Runs commands and reads or writes files in a Linux sandbox. Each task thread and each private chat has its own sandbox. The default sandbox has Python 3 with common data packages, Node.js with npm, git, curl, jq, ripgrep, SQLite and build tools. |
 | `program_exec` | Runs a short JavaScript program. The program can call several read tools at once. A program can run up to 30 seconds and make up to 32 calls. A program cannot change data. |
 
 A sandbox stops after 10 minutes with no command, write or import. Its files are removed when it stops. A command can run up to 60 seconds.
