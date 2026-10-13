@@ -69,7 +69,6 @@ export default defineConfig({
               { label: 'Databases', items: [{ autogenerate: { directory: 'databases' } }] },
               { label: 'Networking', items: [{ autogenerate: { directory: 'networking' } }] },
               { label: 'Sandboxes', items: [{ autogenerate: { directory: 'sandboxes' } }] },
-              { label: 'Slopbot', items: [{ autogenerate: { directory: 'slopbot' } }] },
               {
                 label: 'Storage',
                 items: [
@@ -94,6 +93,11 @@ export default defineConfig({
             label: 'AI API',
             link: '/ai/overview/',
             items: [{ label: 'AI API', items: [{ autogenerate: { directory: 'ai' } }] }],
+          },
+          {
+            label: 'Slopbot',
+            link: '/slopbot/overview/',
+            items: [{ label: 'Slopbot', items: [{ autogenerate: { directory: 'slopbot' } }] }],
           },
           {
             label: 'API reference',
