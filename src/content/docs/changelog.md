@@ -7,6 +7,10 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-14
 
+### AI API: voice instructions for text to speech
+
+`POST /ai/v1/audio/speech` accepts an optional `instructions` field: a description of the voice, 1 to 1000 characters. Without it, `thunder` can use a different voice for each text. See [Text to speech](/api/ai/#text-to-speech).
+
 ### Slopbot: voice in voice channels
 
 Use `/slopbot voice action:join` to make Slopbot join your voice channel. You speak, and Slopbot answers with its normal model and tools. It posts the answer in the voice channel text chat and reads it aloud. See [Voice](/slopbot/voice/).
@@ -15,6 +19,8 @@ Use `/slopbot voice action:join` to make Slopbot join your voice channel. You sp
 - Spoken answers are short. Speech stops at 600 characters.
 - Slopbot handles one speaker at a time.
 - Speech and replies count toward your usage limits.
+
+- Each server has a voice style that keeps one voice. Admins set it with `voice action:style`, in the web console, or by applying a style that Slopbot proposes.
 
 ### Slopbot: inbox
 
