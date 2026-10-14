@@ -21,8 +21,12 @@ A server admin must give Slopbot the View Channel, Connect, Speak and Send Messa
 
 - When you speak, Slopbot transcribes your speech. It posts the text in the voice channel text chat as you. The post shows your name. If the channel has no webhook, Slopbot posts `**Name** (from voice): text`.
 - Slopbot posts its answer in the same chat.
-- Slopbot reads the answer aloud. A spoken answer is short: one to three sentences. Speech stops at 600 characters. The full answer stays in the text chat.
-- When Slopbot starts a tool, it says "One moment."
+- Slopbot reads the answer aloud. A spoken answer is up to about one minute. Speech stops at 2000 characters. The full answer stays in the text chat.
+- Before a slow tool, Slopbot can say what it will do. It speaks the answer when the tool is done.
+- If Slopbot is silent for 8 seconds while it works, it says a short line such as "One moment." It does this at most three times for each answer.
+- Tasks and reminders that you ask for by voice go to the text channel where you asked Slopbot to join. Slopbot posts a link to the task thread in the voice channel chat.
+- If you reach your usage limit, Slopbot tells you once and does not answer.
+- If you ask Slopbot to leave, it finishes its answer first.
 
 ## Voice style
 

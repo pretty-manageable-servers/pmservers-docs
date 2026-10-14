@@ -7,6 +7,16 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-14
 
+### Slopbot: voice fixes
+
+- No more beeps at the start and end of a turn.
+- Spoken answers can be up to about one minute. Speech stops at 2000 characters.
+- Slopbot can speak before and after a tool, and it says a short line if it is silent for 8 seconds while it works.
+- Tasks, such as the sandbox, now work from voice. The task thread opens in the text channel where you asked Slopbot to join. Reminders from voice also go there.
+- Slopbot finishes its answer before it leaves.
+- Slopbot tells you when you reach your usage limit.
+- A reminder whose channel was deleted stops. It no longer retries.
+
 ### AI API: voice instructions for text to speech
 
 `POST /ai/v1/audio/speech` accepts an optional `instructions` field: a description of the voice, 1 to 1000 characters. Without it, `thunder` can use a different voice for each text. See [Text to speech](/api/ai/#text-to-speech).
