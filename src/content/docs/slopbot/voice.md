@@ -10,10 +10,10 @@ Slopbot can join a Discord voice channel. You speak. Slopbot answers with its no
 ## Start a voice session
 
 1. Join a voice channel.
-2. Run `/slopbot voice action:join`. Slopbot joins the channel.
+2. Run `/voice action:join`. Slopbot joins the channel.
 3. Speak. Slopbot answers.
 
-Run `/slopbot voice action:status` to check the session. Run `/slopbot voice action:leave` to make Slopbot leave. Slopbot also leaves when the channel is empty, or after five minutes with no activity.
+Run `/voice action:status` to check the session. Run `/voice action:leave` to make Slopbot leave. Slopbot also leaves when the channel is empty, or after five minutes with no activity.
 
 A server admin must give Slopbot the View Channel, Connect, Speak and Send Messages permissions in the voice channel. Stage channels are not supported.
 
@@ -28,11 +28,11 @@ A server admin must give Slopbot the View Channel, Connect, Speak and Send Messa
 
 Each server has one voice style: a short description of how Slopbot sounds. Slopbot uses it for every spoken answer, so the voice stays the same.
 
-- Server admins (Manage Server) set it with `/slopbot voice action:style instructions:<description>`. Describe gender, age, pitch, pace and tone. Use `default` to go back to the default voice.
+- Server admins (Manage Server) set it with `/voice action:style instructions:<description>`. Describe gender, age, pitch, pace and tone. Use `default` to go back to the default voice.
 - Slopbot plays a short preview after a change.
 - You can also ask Slopbot, for example "make your voice sound calmer". Slopbot posts a proposed style with a preview and Apply and Cancel buttons. Only a server admin can apply it.
 - Admins can also set it in the web console: **Settings > Server settings > Voice**.
-- `/slopbot voice action:status` shows the current style.
+- `/voice action:status` shows the current style.
 
 ## Turns
 
