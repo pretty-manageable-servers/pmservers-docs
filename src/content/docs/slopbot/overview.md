@@ -19,6 +19,8 @@ Where ideas bloom.
 - Saves statements from your team as memories. Each memory links to its source message.
 - Sets reminders, manages tasks and runs polls.
 - Runs long work in a task thread.
+- Joins a Discord voice channel. You speak, and Slopbot answers out loud.
+- Puts items in a member's inbox, with links to the source messages.
 
 ## How Slopbot joins a conversation
 
@@ -38,5 +40,7 @@ One Slopbot serves many Discord servers. Each server has its own settings, chann
 - [Getting started](/slopbot/getting-started/): add Slopbot to a server and sign in to the web console.
 - [Web console](/slopbot/web-console/): private chats, channel transcripts, sharing and settings.
 - [Tools](/slopbot/tools/): what Slopbot can do, and who can use each tool.
+- [Voice](/slopbot/voice/): talk with Slopbot in a voice channel.
+- [Inbox](/slopbot/inbox/): put items in a member's inbox and read them.
 - [Usage and limits](/slopbot/usage-and-limits/): the 5-hour and 7-day limits, grace and resets.
 - [Privacy](/slopbot/privacy/): who can read private chats, transcripts and shared links.

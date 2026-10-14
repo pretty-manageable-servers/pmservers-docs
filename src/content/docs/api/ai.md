@@ -123,6 +123,7 @@ print(result.text)
 | `model` | Yes | `thunder` |
 | `input` | Yes | The text to speak. 1 to 4096 characters. |
 | `voice` | Yes | The voice to use, for example `alloy`. |
+| `instructions` | No | A description of the voice, 1 to 1000 characters. For example: `A calm, clear adult man with a low voice.` Without it, the voice can change from one text to the next. Send the same text each time to keep one voice. Not billed. |
 | `response_format` | No | `wav` (default). Other values return `400`. |
 
 - The answer is a WAV file. The `Content-Type` is `audio/wav`. The audio is 24 kHz, mono, 16-bit PCM.
@@ -163,7 +164,7 @@ These errors are in the OpenAI error format.
 |---|---|---|---|---|
 | `400` | `invalid_request_error` | `invalid_request` | `The file must be a valid PCM WAV audio file.` | Speech to text: the file is not a valid PCM WAV file. |
 | `400` | `invalid_request_error` | `invalid_request` | `Audio is longer than 300 seconds.` | Speech to text: the audio is longer than 300 seconds. |
-| `400` | `invalid_request_error` | `invalid_request` | Names the field that is wrong. | `response_format` is not allowed. `voice` is missing. `input` is empty or longer than 4096 characters. `file` or `model` is missing. |
+| `400` | `invalid_request_error` | `invalid_request` | Names the field that is wrong. | `response_format` is not allowed. `voice` is missing. `input` is empty or longer than 4096 characters. `instructions` is not a string of 1 to 1000 characters. `file` or `model` is missing. |
 | `413` | `invalid_request_error` | `request_too_large` | | Speech to text: the file is larger than 25 MB. |
 | `502` | `upstream_error` | `upstream_error` | | The model service failed. Retry later. |
 | `504` | `upstream_error` | `upstream_timeout` | | The model took too long to answer. Retry later. |
