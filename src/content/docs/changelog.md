@@ -7,6 +7,15 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-14
 
+### Slopbot: clearer tool program results
+
+When Slopbot runs several tools in one program, it now sees more of what happened. Fewer requests need an extra round trip.
+
+- A program that does not print a result no longer fails. Slopbot sees which tool calls ran.
+- If a program fails part way, Slopbot keeps the results it already has.
+- A tool option with a wrong value now names the values that are allowed.
+- Bug reports can point to a message in a web chat, not only in Discord.
+
 ### AI API: voice instructions for text to speech
 
 `POST /ai/v1/audio/speech` accepts an optional `instructions` field: a description of the voice, 1 to 1000 characters. Without it, `thunder` can use a different voice for each text. See [Text to speech](/api/ai/#text-to-speech).
