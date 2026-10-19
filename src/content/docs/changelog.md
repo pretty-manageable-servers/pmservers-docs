@@ -22,7 +22,7 @@ When Slopbot runs several tools in one program, it now sees more of what happene
 
 ### Slopbot: voice in voice channels
 
-Use `/slopbot voice action:join` to make Slopbot join your voice channel. You speak, and Slopbot answers with its normal model and tools. It posts the answer in the voice channel text chat and reads it aloud. See [Voice](/slopbot/voice/).
+Use `/voice action:join` to make Slopbot join your voice channel. You speak, and Slopbot answers with its normal model and tools. It posts the answer in the voice channel text chat and reads it aloud. See [Voice](/slopbot/voice/).
 
 - Your speech is posted in the text chat as you.
 - Spoken answers are short. Speech stops at 600 characters.
