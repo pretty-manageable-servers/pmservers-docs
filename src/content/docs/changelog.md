@@ -5,6 +5,16 @@ description: Changes to PMS Cloud, newest first. We release changes when they ar
 
 PMS Cloud changes all the time. We release a change when it is ready. Each entry has the date it went live, newest first.
 
+## 2026-10-22
+
+### Slopbot: sees your images in follow-up messages
+
+Slopbot now sees images you sent just before your question. Before, it saw only the file name.
+
+- Post an image, then ask about it in the next message. Slopbot looks at your images from the last 2 minutes and the message you reply to.
+- Slopbot can look at an earlier image again when you ask about it, in Discord and in web chats.
+- Slopbot no longer shows image links that do not work.
+
 ## 2026-10-14
 
 ### Slopbot: clearer tool program results
