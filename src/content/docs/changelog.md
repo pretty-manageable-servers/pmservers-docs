@@ -7,6 +7,13 @@ PMS Cloud changes all the time. We release a change when it is ready. Each entry
 
 ## 2026-10-22
 
+### CLI v0.11.1: security update
+
+Update the `pms` CLI to [v0.11.1](https://github.com/pretty-manageable-servers/pmservers-cli/releases/tag/v0.11.1). It no longer trusts the compromised eMudhra intermediate certificates (CVE-2026-111943). Older versions still trust them.
+
+- Download the new version from the release page and replace your `pms` binary.
+- Nothing else changes. Your login and commands work as before.
+
 ### Slopbot: sees your images in follow-up messages
 
 Slopbot now sees images you sent just before your question. Before, it saw only the file name.
